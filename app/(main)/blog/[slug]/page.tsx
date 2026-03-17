@@ -132,7 +132,7 @@ export default function BlogPostDetail({ params }: { params: Promise<{ slug: str
 
               <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden mb-12 shadow-lg">
                 <Image
-                  src={post.featuredImage || post.imageUrl}
+                  src={post.featuredImage || post.imageUrl || "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800"}
                   alt={post.title}
                   fill
                   className="object-cover"

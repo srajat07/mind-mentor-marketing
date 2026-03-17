@@ -9,9 +9,10 @@ import { getBlogs, getCategories } from "@/app/actions/blogActions";
 
 function BlogCard({ post }: { post: any }) {
   const [imageError, setImageError] = useState(false);
+  const fallbackImage = "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800";
 
   return (
-    <Link 
+    <Link
       href={`/blog/${post.slug}`}
       className="group bg-white rounded-2xl border border-[#E3E3E3] overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
     >
@@ -19,7 +20,7 @@ function BlogCard({ post }: { post: any }) {
       <div className="relative aspect-[16/9] w-full overflow-hidden bg-gray-100 flex items-center justify-center">
         {!imageError ? (
           <Image
-            src={post.featuredImage || post.imageUrl}
+            src={post.featuredImage || post.imageUrl || fallbackImage}
             alt={post.title}
             fill
             unoptimized
@@ -28,7 +29,7 @@ function BlogCard({ post }: { post: any }) {
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-[#5653FE]/10 to-[#5653FE]/5 flex items-center justify-center">
-            <span className="text-[#5653FE] font-bold text-lg">MindMentorMarketing AI</span>
+            <span className="text-[#5653FE] font-bold text-lg">MindMentor AI</span>
           </div>
         )}
         <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg shadow-sm z-10">
@@ -94,19 +95,19 @@ export default function BlogPage() {
     }
     fetchData();
   }, []);
-  
+
   const categoriesList = useMemo(() => ["All Articles", ...categories.map(c => c.name)], [categories]);
 
   const filteredPosts = useMemo(() => {
     return allPosts.filter((post) => {
-      const matchesCategory = 
-        activeCategory === "All Articles" || 
+      const matchesCategory =
+        activeCategory === "All Articles" ||
         post.category?.name === activeCategory;
-      
-      const matchesSearch = 
+
+      const matchesSearch =
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.category?.name?.toLowerCase().includes(searchQuery.toLowerCase());
-      
+
       return matchesCategory && matchesSearch;
     });
   }, [allPosts, activeCategory, searchQuery]);
@@ -122,7 +123,7 @@ export default function BlogPage() {
       (entries) => {
         if (entries[0].isIntersecting && !isLoadingMore && visiblePostsCount < filteredPosts.length) {
           setIsLoadingMore(true);
-          
+
           // Simulate API delay
           setTimeout(() => {
             setVisiblePostsCount((prev) => prev + 3);
@@ -147,7 +148,7 @@ export default function BlogPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-6xl font-bold text-[#24234C] mb-6 tracking-tight">
-              MindMentorMarketing Blog
+              MindMentor Blog
             </h1>
             <p className="text-xl text-[#4F5B76] mb-10 leading-relaxed">
               Practical guides on AI tools, automation, and what's changing across industries. Learn how to stay ahead in the era of artificial intelligence.
@@ -178,11 +179,10 @@ export default function BlogPage() {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`whitespace-nowrap text-[15px] font-semibold transition-all relative py-2 ${
-                  activeCategory === category
-                    ? "text-[#5653FE]"
-                    : "text-[#4F5B76] hover:text-[#24234C]"
-                }`}
+                className={`whitespace-nowrap text-[15px] font-semibold transition-all relative py-2 ${activeCategory === category
+                  ? "text-[#5653FE]"
+                  : "text-[#4F5B76] hover:text-[#24234C]"
+                  }`}
               >
                 {category}
                 {activeCategory === category && (
@@ -206,8 +206,8 @@ export default function BlogPage() {
           ) : (
             <div className="text-center py-20 bg-gray-50 rounded-2xl border border-dashed border-gray-200">
               <p className="text-lg text-[#4F5B76]">No articles found matching your criteria.</p>
-              <button 
-                onClick={() => {setSearchQuery(""); setActiveCategory("All Articles");}}
+              <button
+                onClick={() => { setSearchQuery(""); setActiveCategory("All Articles"); }}
                 className="mt-4 text-[#5653FE] font-semibold hover:underline"
               >
                 Reset filters

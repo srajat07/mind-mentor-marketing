@@ -61,10 +61,17 @@ export default function BlogManagement() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    
+    // Ensure image logic
+    const sanitizedData = { ...formData };
+    if (!sanitizedData.imageUrl) {
+      sanitizedData.imageUrl = "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800";
+    }
+
     if (editingId) {
-      await updateBlog(editingId, formData);
+      await updateBlog(editingId, sanitizedData);
     } else {
-      await createBlog(formData);
+      await createBlog(sanitizedData);
     }
     resetForm();
     loadData();

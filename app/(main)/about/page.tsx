@@ -40,12 +40,12 @@ export default function AboutPage() {
           {/* Main Heading */}
           <h1 className="text-5xl md:text-6xl font-semibold mb-6 tracking-tight">
             <span className="text-[#24234C]">About </span>
-            <span className="text-[#5653FE]">MindMentorMarketing</span>
+            <span className="text-[#5653FE]">MindMentor</span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-[#4F5B76] text-xl max-w-[800px] leading-relaxed mb-12">
-            MindMentorMarketing is a world leader in moblile-first EdTech learning, dedicated to empowering our users to build real AI skills through daily guided practice.
+            MindMentor is a world leader in moblile-first EdTech learning, dedicated to empowering our users to build real AI skills through daily guided practice.
           </p>
 
           {/* Metric Cards */}
@@ -90,7 +90,7 @@ export default function AboutPage() {
 
               <div className="space-y-6 text-lg text-[#4F5B76] leading-relaxed">
                 <p>
-                  MindMentorMarketing was born out of one big question:
+                  MindMentor was born out of one big question:
                   <br />
                   <span className="italic">
                     "How can I learn to actually use AI in my work and life—without taking a course I'll never finish?"
@@ -100,7 +100,7 @@ export default function AboutPage() {
                   Our approach combines daily challenges, practical tutorials, and personalized tracks to help anyone go from curious to confident — <span className="font-bold text-[#24234C]">one day at a time.</span>
                 </p>
                 <p>
-                  Our founders—marketers, educators, and tech enthusiasts—saw the rise of AI and remote work, but at the same time saw a growing skills gap. So we built MindMentorMarketing: a micro-learning platform designed to help you master the most in-demand digital and AI skills without overwhelming your busy schedule.
+                  Our founders—marketers, educators, and tech enthusiasts—saw the rise of AI and remote work, but at the same time saw a growing skills gap. So we built MindMentor: a micro-learning platform designed to help you master the most in-demand digital and AI skills without overwhelming your busy schedule.
                 </p>
                 <p>
                   What began as a small experiment with a handful of lessons grew into a global learning platform used by thousands of people each month.
@@ -290,7 +290,7 @@ export default function AboutPage() {
                     Most platforms overwhelm you with hour-long courses. We don't.
                   </p>
                   <p>
-                    MindMentorMarketing is designed around <span className="font-bold text-[#24234C]">daily micro-training</span>—bite-sized lessons that stick. And with built-in support, you're not just memorizing; you're actually applying skills in real life.
+                    MindMentor is designed around <span className="font-bold text-[#24234C]">daily micro-training</span>—bite-sized lessons that stick. And with built-in support, you're not just memorizing; you're actually applying skills in real life.
                   </p>
                 </div>
               </div>
@@ -454,7 +454,7 @@ export default function AboutPage() {
           <div className="space-y-6 text-lg leading-relaxed text-[#4F5B76]">
             <p className="mx-auto max-w-lg">
               Got a question? Want to collaborate?<br className="hidden sm:block" />
-              Or just curious about how MindMentorMarketing can help you level up?
+              Or just curious about how MindMentor can help you level up?
             </p>
 
             <p>
@@ -501,7 +501,7 @@ export default function AboutPage() {
               Frequently asked questions
             </h2>
             <p className="text-[#4F5B76] text-lg">
-              Everything you need to know about MindMentorMarketing and how we can help you succeed.
+              Everything you need to know about MindMentor and how we can help you succeed.
             </p>
           </div>
 

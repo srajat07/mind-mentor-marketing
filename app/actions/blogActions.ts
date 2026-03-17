@@ -52,7 +52,16 @@ export async function getBlogs(filter = {}) {
     .populate("category")
     .populate("tags")
     .sort({ createdAt: -1 });
-  return JSON.parse(JSON.stringify(blogs));
+  
+  const sanitizedBlogs = blogs.map(blog => {
+    const b = blog.toObject();
+    if (!b.featuredImage && !b.imageUrl) {
+      b.featuredImage = "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800";
+    }
+    return b;
+  });
+
+  return JSON.parse(JSON.stringify(sanitizedBlogs));
 }
 
 export async function getBlogBySlug(slug: string) {
@@ -60,7 +69,15 @@ export async function getBlogBySlug(slug: string) {
   const blog = await Blog.findOne({ slug, status: "published" })
     .populate("category")
     .populate("tags");
-  return JSON.parse(JSON.stringify(blog));
+  
+  if (blog) {
+    const b = blog.toObject();
+    if (!b.featuredImage && !b.imageUrl) {
+      b.featuredImage = "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800";
+    }
+    return JSON.parse(JSON.stringify(b));
+  }
+  return null;
 }
 
 // Category Actions
