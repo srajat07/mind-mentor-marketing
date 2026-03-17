@@ -15,7 +15,7 @@ import ReactFlow, {
 import "reactflow/dist/style.css";
 
 import { QuestionNode, StatementNode, TerminalNode } from "@/components/admin/quiz/CustomNodes";
-import { getQuestionnaire, saveDraft, publishQuestionnaire } from "@/app/actions/quizActions";
+import { getQuizData, saveQuizDraft, publishQuizLive } from "@/app/actions/quizActions";
 import { Save, Send, Plus, AlertCircle } from "lucide-react";
 
 const nodeTypes = {
@@ -69,6 +69,7 @@ function FlowEditor() {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [saving, setSaving] = useState(false);
   const [publishing, setPublishing] = useState(false);
+  const [lastSaved, setLastSaved] = useState<Date | null>(null);
 
   const { screenToFlowPosition, fitView } = useReactFlow();
 
@@ -102,9 +103,18 @@ function FlowEditor() {
   // ── Load from DB, inject callbacks + preserve isStart flag ───────────────
   useEffect(() => {
     async function loadData() {
-      const data = await getQuestionnaire();
-      if (data?.nodes?.length) {
-        const hydrated = data.nodes.map((node: any) => ({
+      // 1. Try to load DRAFT first
+      let resp = await getQuizData("DRAFT");
+      console.log("Attempting to load DRAFT:", resp);
+
+      // 2. Fallback to PUBLISHED if DRAFT is empty
+      if (!resp || !resp.nodes || resp.nodes.length === 0) {
+        resp = await getQuizData("PUBLISHED");
+        console.log("DRAFT missing, attempting to load PUBLISHED:", resp);
+      }
+
+      if (resp?.nodes?.length) {
+        const hydrated = resp.nodes.map((node: any) => ({
           ...node,
           data: {
             ...node.data,
@@ -113,7 +123,19 @@ function FlowEditor() {
           },
         }));
         setNodes(hydrated);
-        setEdges(data.edges || []);
+        
+        // Migrate legacy 'opt-' handle IDs to 'handle-' format
+        const migratedEdges = (resp.edges || []).map((edge: any) => {
+          if (edge.sourceHandle && edge.sourceHandle.startsWith("opt-")) {
+            return { ...edge, sourceHandle: edge.sourceHandle.replace("opt-", "handle-") };
+          }
+          return edge;
+        });
+        
+        // Delay setting edges to ensure nodes (and their handles) are rendered first
+        setTimeout(() => {
+          setEdges(migratedEdges);
+        }, 100);
       }
     }
     loadData();
@@ -122,7 +144,7 @@ function FlowEditor() {
   const onConnect = useCallback(
     (params: any) => {
       if (params.source === params.target) return;
-      
+
       // Feature: Automatic Edge Replacement
       // If a line is drawn from an occupied handle, remove the old one first.
       setEdges((eds) => {
@@ -135,21 +157,20 @@ function FlowEditor() {
     [setEdges]
   );
 
-  // Real-time validation: although we auto-replace, this prevents 
-  // 'phantom' lines or illegal multi-connections in some edge cases.
+  // Real-time validation: strictly enforce one outgoing connection per handle
   const isValidConnection = useCallback((connection: any) => {
     if (connection.source === connection.target) return false;
-    
-    // Check if the specific source handle already has a connection
+
+    // Rule 1: A sourceHandle can only have ONE outgoing edge
     const alreadyConnected = edges.some(
       (e) => e.source === connection.source && e.sourceHandle === connection.sourceHandle
     );
-    
-    // We return true even if connected because onConnect handles the replacement logic,
-    // but the user's prompt specifically asked for this check.
-    // However, for pure 'Locked' logic (Method 1), we'd return !alreadyConnected.
-    // Let's stick to the Auto-Replace logic (Method 3) as it's better UX.
-    return true; 
+
+    // Rule 2: A targetHandle CAN accept multiple incoming edges 
+    // (This is default behavior, so we just focus on preventing Rule 1 violations)
+    if (alreadyConnected) return false;
+
+    return true;
   }, [edges]);
 
   // ── Save — strips function refs before persisting ─────────────────────────
@@ -160,11 +181,16 @@ function FlowEditor() {
         const { onUpdate, onDelete, ...rest } = data;
         return { ...node, data: rest };
       });
-      await saveDraft(cleanNodes, edges);
-      alert("Draft saved successfully!");
+      const res = await saveQuizDraft(cleanNodes, edges);
+      if (res.success) {
+        setLastSaved(new Date());
+        alert("Draft saved successfully!");
+      } else {
+        alert("Failed to save draft: " + res.error);
+      }
     } catch (error) {
       console.error(error);
-      alert("Failed to save draft.");
+      alert("An unexpected error occurred while saving.");
     } finally {
       setSaving(false);
     }
@@ -196,11 +222,23 @@ function FlowEditor() {
 
     setPublishing(true);
     try {
-      await publishQuestionnaire();
-      alert("Questionnaire published live!");
+      // Sanitize nodes before sending to server
+      const cleanNodes = nodes.map(({ data, ...node }: any) => {
+        const { onUpdate, onDelete, ...rest } = data;
+        return { ...node, data: rest };
+      });
+
+      const res = await publishQuizLive(cleanNodes, edges);
+      if (res.success) {
+        alert("Quiz is now LIVE!");
+        // Refresh editor to reflect published state
+        window.location.reload();
+      } else {
+        alert("Failed to publish: " + res.error);
+      }
     } catch (error) {
       console.error(error);
-      alert("Failed to publish.");
+      alert("An unexpected error occurred while publishing.");
     } finally {
       setPublishing(false);
     }
@@ -249,14 +287,14 @@ function FlowEditor() {
       type,
       position,
       data: {
-        label:       type === "question" ? "New Question" : "",
-        title:       type === "statement" ? "New Statement" : "",
-        desc:        type === "statement" ? "Enter description here" : "",
-        options:     type === "question" ? ["Option 1", "Option 2"] : [],
-        qtype:       type === "question" ? "SINGLE_SELECT" : undefined,
+        label: type === "question" ? "New Question" : "",
+        title: type === "statement" ? "New Statement" : "",
+        desc: type === "statement" ? "Enter description here" : "",
+        options: type === "question" ? ["Option 1", "Option 2"] : [],
+        qtype: type === "question" ? "SINGLE_SELECT" : undefined,
         resultTitle: type === "terminal" ? "Final Result" : "",
-        url:         type === "terminal" ? "/plans" : "",
-        isStart:     false,
+        url: type === "terminal" ? "/plans" : "",
+        isStart: false,
         onUpdate: (d: any, s?: boolean) => onUpdateNode(newNodeId, d, s),
         onDelete: () => onDeleteNode(newNodeId),
       },
@@ -282,6 +320,11 @@ function FlowEditor() {
         <span style={{ fontSize: 13, fontWeight: 700, color: "#1e293b", marginRight: 4 }}>
           Flow Editor
         </span>
+        {lastSaved && (
+          <span style={{ fontSize: 10, color: "#94a3b8" }}>
+            Last saved: {lastSaved.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+          </span>
+        )}
         <div style={{ width: 1, height: 20, background: "#e2e8f0" }} />
 
         {/* Question */}
@@ -395,9 +438,9 @@ function FlowEditor() {
           <MiniMap
             nodeColor={(n) =>
               n.data?.isStart ? "#22c55e"
-              : n.type === "terminal" ? "#ef4444"
-              : n.type === "question" ? "#5A4FCF"
-              : "#94a3b8"
+                : n.type === "terminal" ? "#ef4444"
+                  : n.type === "question" ? "#5A4FCF"
+                    : "#94a3b8"
             }
           />
         </ReactFlow>

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Rocket, BookOpen, MonitorSmartphone, Settings2, ChevronRight, ChevronLeft, Star, Lock, Check, Trophy, CheckCircle2, ArrowRight, PenTool, CheckSquare, Plus, Minus } from "lucide-react";
+import Link from "next/link";
 
 function AnimatedStat({ finalValue, precise, label, suffix }: { finalValue: number, precise: string, label: string, suffix: string }) {
   const ref = useRef(null);
@@ -254,9 +255,9 @@ export default function Home() {
                 Learn AI skills to advance your career and stay competitive
               </p>
 
-              <button className="px-8 py-3.5 rounded-[2rem] bg-primary text-white font-semibold text-lg flex items-center gap-2 hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(86,83,254,0.5)] transition-all duration-300">
+              <Link href="/quiz" className="px-8 py-3.5 rounded-[2rem] bg-primary text-white font-semibold text-lg flex items-center gap-2 hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(86,83,254,0.5)] transition-all duration-300">
                 Start Now <ArrowRight size={18} />
-              </button>
+              </Link>
 
               {/* Social Proof Avatars */}
               <div className="mt-10 flex items-center gap-3">
@@ -594,9 +595,9 @@ export default function Home() {
                 <p className="text-[#4F5B76] text-[17px] mb-10 max-w-[420px] leading-relaxed">
                   Learn practical AI tools that top professionals use to work smarter and stay ahead
                 </p>
-                <button className="bg-[#5653FE] text-white px-8 py-3.5 rounded-full font-semibold flex items-center gap-2 hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(86,83,254,0.5)] transition-all duration-300 w-max text-[15px]">
+                <Link href="/quiz" className="bg-[#5653FE] text-white px-8 py-3.5 rounded-full font-semibold flex items-center gap-2 hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(86,83,254,0.5)] transition-all duration-300 w-max text-[15px]">
                   Take the Quiz <ChevronRight size={18} strokeWidth={2.5} />
-                </button>
+                </Link>
               </div>
 
               {/* Right Column (Visual Graphic: User Orbit) */}
@@ -872,9 +873,9 @@ export default function Home() {
                 <p className="text-[#4F5B76] text-lg mb-10 leading-relaxed max-w-[500px]">
                   Complete your AI course and receive a certificate to highlight your expertise. It's proof of the valuable skills you've gained to tackle challenges, achieve your goals, and move forward in your career or personal projects.
                 </p>
-                <button className="bg-[#5653FE] text-white px-8 py-4 rounded-full font-semibold flex items-center gap-2 hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(86,83,254,0.5)] transition-all duration-300 w-max">
+                <Link href="/quiz" className="bg-[#5653FE] text-white px-8 py-4 rounded-full font-semibold flex items-center gap-2 hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(86,83,254,0.5)] transition-all duration-300 w-max">
                   Get Certificate Today <ChevronRight size={20} strokeWidth={2.5} />
-                </button>
+                </Link>
               </div>
 
               {/* Right Side: CSS Certificate Mockup */}
@@ -1194,9 +1195,9 @@ export default function Home() {
 
             {/* CTA Button */}
             <div className="flex justify-center mt-4 mb-2">
-              <button className="bg-[#5653FE] text-white px-10 py-4 rounded-full font-semibold flex items-center gap-2 hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(86,83,254,0.5)] transition-all duration-300 w-full sm:w-auto justify-center text-[16px]">
+              <Link href="/quiz" className="bg-[#5653FE] text-white px-10 py-4 rounded-full font-semibold flex items-center gap-2 hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(86,83,254,0.5)] transition-all duration-300 w-full sm:w-auto justify-center text-[16px]">
                 Join Our Challenge
-              </button>
+              </Link>
             </div>
 
           </div>
@@ -1412,9 +1413,9 @@ export default function Home() {
                 <p className="text-[#4F5B76] text-lg md:text-xl mb-10 leading-relaxed">
                   Learn today, take control of your future, and build new skills in AI and digital tools
                 </p>
-                <button className="bg-[#5653FE] text-white px-8 py-4 rounded-full font-semibold flex items-center gap-2 hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(86,83,254,0.5)] transition-all duration-300 w-full sm:w-auto justify-center text-[16px]">
+                <Link href="/quiz" className="bg-[#5653FE] text-white px-8 py-4 rounded-full font-semibold flex items-center gap-2 hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(86,83,254,0.5)] transition-all duration-300 w-full sm:w-auto justify-center text-[16px]">
                   Start Now <ChevronRight size={20} strokeWidth={2.5} />
-                </button>
+                </Link>
               </div>
 
               {/* Right Side: Phone Mockup */}

@@ -2,7 +2,7 @@ import mongoose, { Schema, Document } from "mongoose";
 
 export interface IQuestionnaire extends Document {
   title: string;
-  status: "draft" | "published";
+  status: "DRAFT" | "PUBLISHED";
   nodes: any[];
   edges: any[];
   createdAt: Date;
@@ -12,9 +12,9 @@ export interface IQuestionnaire extends Document {
 const QuestionnaireSchema: Schema = new Schema(
   {
     title: { type: String, required: true, default: "Personalized AI Learning Path" },
-    status: { type: String, enum: ["draft", "published"], default: "draft" },
-    nodes: { type: Array, default: [] },
-    edges: { type: Array, default: [] },
+    status: { type: String, enum: ["DRAFT", "PUBLISHED"], default: "DRAFT" },
+    nodes: { type: [Schema.Types.Mixed], default: [] },
+    edges: { type: [Schema.Types.Mixed], default: [] },
   },
   { timestamps: true }
 );
