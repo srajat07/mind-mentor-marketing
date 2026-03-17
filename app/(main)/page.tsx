@@ -859,103 +859,101 @@ export default function Home() {
       </section>
 
       {/* Earn a Certificate Section */}
-      <section className="w-full bg-[radial-gradient(ellipse_at_top_left,_#F4F4FF_0%,_#FFFFFF_60%,_#FFFFFF_100%)] py-24">
-        <div className="w-auto m-2 p-2 rounded-[24px] border border-[#E3E3E3] shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-          <div className="bg-white rounded-[16px] border border-[#E3E3E3] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-12 md:p-20">
-            <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-y-[24px] gap-x-10 py-[10px] lg:flex-row lg:py-[30px] justify-center">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <section className="py-24">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-[2rem] border border-[#E3E3E3] bg-[linear-gradient(110deg,#F5F3FF_0%,#FFFFFF_45%,#FFF0E6_100%)] p-8 md:p-12 lg:p-16 relative overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-                {/* Left Side: Copy & CTA */}
-                <div className="order-2 lg:order-1">
-                  <h2 className="font-semibold text-[#24234C] text-[36px] md:text-4xl leading-[1.2] mb-6 tracking-tight">
-                    Earn a certificate that<br className="hidden md:block" /> proves your AI skills
-                  </h2>
-                  <p className="text-[#4F5B76] text-lg mb-10 leading-relaxed max-w-[500px]">
-                    Complete your AI course and receive a certificate to highlight your expertise. It's proof of the valuable skills you've gained to tackle challenges, achieve your goals, and move forward in your career or personal projects.
-                  </p>
-                  <button className="bg-[#5653FE] text-white px-8 py-4 rounded-full font-semibold flex items-center gap-2 hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(86,83,254,0.5)] transition-all duration-300 w-max">
-                    Get Certificate Today <ChevronRight size={20} strokeWidth={2.5} />
-                  </button>
-                </div>
+              {/* Left Side: Copy & CTA */}
+              <div className="order-2 lg:order-1">
+                <h2 className="font-semibold text-[#24234C] text-[36px] md:text-4xl leading-[1.2] mb-6 tracking-tight">
+                  Earn a certificate that<br className="hidden md:block" /> proves your AI skills
+                </h2>
+                <p className="text-[#4F5B76] text-lg mb-10 leading-relaxed max-w-[500px]">
+                  Complete your AI course and receive a certificate to highlight your expertise. It's proof of the valuable skills you've gained to tackle challenges, achieve your goals, and move forward in your career or personal projects.
+                </p>
+                <button className="bg-[#5653FE] text-white px-8 py-4 rounded-full font-semibold flex items-center gap-2 hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(86,83,254,0.5)] transition-all duration-300 w-max">
+                  Get Certificate Today <ChevronRight size={20} strokeWidth={2.5} />
+                </button>
+              </div>
 
-                {/* Right Side: CSS Certificate Mockup */}
-                <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-                  <div className="w-full max-w-[520px] aspect-[1.5] bg-white rounded-xl border border-[#E3E3E3] shadow-sm p-8 flex flex-col relative overflow-hidden">
+              {/* Right Side: CSS Certificate Mockup */}
+              <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+                <div className="w-full max-w-[520px] aspect-[1.5] bg-white rounded-xl border border-[#E3E3E3] shadow-sm p-8 flex flex-col relative overflow-hidden">
 
-                    {/* Header Row */}
-                    <div className="flex justify-between items-start mb-8">
-                      <span className="text-[10px] font-semibold tracking-widest text-[#4F5B76] uppercase">Certificate</span>
-                      <span className="text-[5px] text-[#4F5B76]/50 uppercase tracking-widest">Certificate ID: F4A7E283-A67 | 2026-06-15 14:30:00</span>
+                  {/* Header Row */}
+                  <div className="flex justify-between items-start mb-8">
+                    <span className="text-[10px] font-semibold tracking-widest text-[#4F5B76] uppercase">Certificate</span>
+                    <span className="text-[5px] text-[#4F5B76]/50 uppercase tracking-widest">Certificate ID: F4A7E283-A67 | 2026-06-15 14:30:00</span>
+                  </div>
+
+                  {/* Body Info */}
+                  <div className="flex-1 flex flex-col justify-center relative z-10 w-full mt-2">
+                    <h3 className="text-3xl font-bold text-[#24234C] mb-8 tracking-tight">[ChatGPT]</h3>
+
+                    <div className="mb-1">
+                      <span className="text-[9px] font-bold tracking-widest text-[#4F5B76]/70 uppercase">Issued to</span>
                     </div>
+                    <h4 className="text-xl font-bold text-[#24234C] mb-4">Joshua H.</h4>
 
-                    {/* Body Info */}
-                    <div className="flex-1 flex flex-col justify-center relative z-10 w-full mt-2">
-                      <h3 className="text-3xl font-bold text-[#24234C] mb-8 tracking-tight">[ChatGPT]</h3>
+                    <p className="text-[7.5px] text-[#4F5B76] leading-[1.6] max-w-[55%] font-medium">
+                      Awarded for the successful completion of the [ChatGPT], reflecting over [3 hours] of in-depth training and skill development.
+                    </p>
+                  </div>
 
-                      <div className="mb-1">
-                        <span className="text-[9px] font-bold tracking-widest text-[#4F5B76]/70 uppercase">Issued to</span>
+                  {/* The Purple Seal Background */}
+                  <div className="absolute right-6 top-[45%] -translate-y-1/2 w-44 h-44 flex items-center justify-center pointer-events-none">
+                    {/* 16-Point Wavy Rosette SVG Path */}
+                    <svg viewBox="0 0 100 100" className="w-full h-full text-[#EEF0FE] drop-shadow-sm" fill="currentColor" stroke="#8A88FF" strokeWidth="2.5">
+                      <path d="M50 5 L58 12 L68 9 L73 18 L83 20 L84 30 L93 36 L89 45 L95 53 L86 59 L88 69 L78 72 L75 82 L65 82 L58 90 L50 84 L42 90 L35 82 L25 82 L22 72 L12 69 L14 59 L5 53 L11 45 L7 36 L16 30 L17 20 L27 18 L32 9 L42 12 Z" strokeLinejoin="round" />
+                    </svg>
+                    {/* Inner icon content */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-[4.5rem] h-[4.5rem] rounded-full border-[3px] border-[#5653FE] flex items-center justify-center">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5653FE" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M12 2v20" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                          <path d="M22 12H2" /><path d="M19 17v-9.5A3.5 3.5 0 0 0 15.5 4h-7A3.5 3.5 0 0 0 5 7.5v9" />
+                        </svg>
                       </div>
-                      <h4 className="text-xl font-bold text-[#24234C] mb-4">Joshua H.</h4>
+                    </div>
+                  </div>
 
-                      <p className="text-[7.5px] text-[#4F5B76] leading-[1.6] max-w-[55%] font-medium">
-                        Awarded for the successful completion of the [ChatGPT], reflecting over [3 hours] of in-depth training and skill development.
-                      </p>
+                  {/* Footer Stats & Signatures */}
+                  <div className="mt-10 flex items-end justify-between relative z-10 w-full mb-1">
+                    {/* Left: Date & Length */}
+                    <div className="flex gap-10">
+                      <div className="flex flex-col">
+                        <span className="text-[6.5px] text-[#4F5B76] mb-1.5 font-medium">Date of issue</span>
+                        <span className="text-[8.5px] font-bold text-[#24234C] border-b border-[#E3E3E3] pb-0.5 min-w-[50px]">[14/10/2024]</span>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[6.5px] text-[#4F5B76] mb-1.5 font-medium">Course Length</span>
+                        <span className="text-[8.5px] font-bold text-[#24234C] border-b border-[#E3E3E3] pb-0.5 min-w-[50px]">[3 hours]</span>
+                      </div>
                     </div>
 
-                    {/* The Purple Seal Background */}
-                    <div className="absolute right-6 top-[45%] -translate-y-1/2 w-44 h-44 flex items-center justify-center pointer-events-none">
-                      {/* 16-Point Wavy Rosette SVG Path */}
-                      <svg viewBox="0 0 100 100" className="w-full h-full text-[#EEF0FE] drop-shadow-sm" fill="currentColor" stroke="#8A88FF" strokeWidth="2.5">
-                        <path d="M50 5 L58 12 L68 9 L73 18 L83 20 L84 30 L93 36 L89 45 L95 53 L86 59 L88 69 L78 72 L75 82 L65 82 L58 90 L50 84 L42 90 L35 82 L25 82 L22 72 L12 69 L14 59 L5 53 L11 45 L7 36 L16 30 L17 20 L27 18 L32 9 L42 12 Z" strokeLinejoin="round" />
-                      </svg>
-                      {/* Inner icon content */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-[4.5rem] h-[4.5rem] rounded-full border-[3px] border-[#5653FE] flex items-center justify-center">
-                          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5653FE" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M12 2v20" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                            <path d="M22 12H2" /><path d="M19 17v-9.5A3.5 3.5 0 0 0 15.5 4h-7A3.5 3.5 0 0 0 5 7.5v9" />
+                    {/* Right: Signature Area */}
+                    <div className="flex items-center gap-14 pr-2">
+                      <div className="text-[#5653FE] font-bold text-[13px] opacity-80" style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', letterSpacing: '-0.5px' }}>
+                        MindMentor
+                      </div>
+
+                      <div className="flex flex-col items-center">
+                        <div className="h-7 w-[4.5rem] relative">
+                          {/* Faux Handcrafted Signature SVG */}
+                          <svg className="absolute bottom-1 w-full h-full stroke-[#24234C]" fill="none" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 25 Q 15 5, 25 18 T 40 22 Q 50 10, 48 25 T 65 18 Q 75 0, 78 25 T 90 12" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                            <line x1="0" y1="28" x2="100" y2="28" stroke="#4F5B76" strokeWidth="0.5" strokeOpacity="0.5" />
                           </svg>
                         </div>
+                        <span className="text-[5px] text-[#4F5B76] pt-1.5 w-16 text-center tracking-wide">Founders, MindMentor</span>
                       </div>
                     </div>
-
-                    {/* Footer Stats & Signatures */}
-                    <div className="mt-10 flex items-end justify-between relative z-10 w-full mb-1">
-                      {/* Left: Date & Length */}
-                      <div className="flex gap-10">
-                        <div className="flex flex-col">
-                          <span className="text-[6.5px] text-[#4F5B76] mb-1.5 font-medium">Date of issue</span>
-                          <span className="text-[8.5px] font-bold text-[#24234C] border-b border-[#E3E3E3] pb-0.5 min-w-[50px]">[14/10/2024]</span>
-                        </div>
-                        <div className="flex flex-col">
-                          <span className="text-[6.5px] text-[#4F5B76] mb-1.5 font-medium">Course Length</span>
-                          <span className="text-[8.5px] font-bold text-[#24234C] border-b border-[#E3E3E3] pb-0.5 min-w-[50px]">[3 hours]</span>
-                        </div>
-                      </div>
-
-                      {/* Right: Signature Area */}
-                      <div className="flex items-center gap-14 pr-2">
-                        <div className="text-[#5653FE] font-bold text-[13px] opacity-80" style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', letterSpacing: '-0.5px' }}>
-                          MindMentor
-                        </div>
-
-                        <div className="flex flex-col items-center">
-                          <div className="h-7 w-[4.5rem] relative">
-                            {/* Faux Handcrafted Signature SVG */}
-                            <svg className="absolute bottom-1 w-full h-full stroke-[#24234C]" fill="none" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M10 25 Q 15 5, 25 18 T 40 22 Q 50 10, 48 25 T 65 18 Q 75 0, 78 25 T 90 12" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                              <line x1="0" y1="28" x2="100" y2="28" stroke="#4F5B76" strokeWidth="0.5" strokeOpacity="0.5" />
-                            </svg>
-                          </div>
-                          <span className="text-[5px] text-[#4F5B76] pt-1.5 w-16 text-center tracking-wide">Founders, MindMentor</span>
-                        </div>
-                      </div>
-                    </div>
-
                   </div>
-                </div>
 
+                </div>
               </div>
+
             </div>
           </div>
         </div>
