@@ -49,6 +49,20 @@ export default function BlogPostDetail({ params }: { params: Promise<{ slug: str
     }
   }, [post]);
 
+  // Handle initial hash in URL
+  useEffect(() => {
+    if (toc.length > 0 && typeof window !== 'undefined' && window.location.hash) {
+      const id = decodeURIComponent(window.location.hash.substring(1));
+      const element = document.getElementById(id);
+      if (element) {
+        // Small delay to ensure everything is rendered
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [toc]);
+
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);

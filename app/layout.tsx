@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "MindMentor - AI, Digital Tools, and Career Skills",
-  description: "Learn AI, Digital Tools, and Career Skills with MindMentor.",
+  title: "MindMentor Marketing | AI, Digital Tools & Career Growth",
+  description: "Master AI, Digital Tools, and Career Skills with MindMentor Marketing. Empowering your digital journey.",
 };
 
 export default function RootLayout({

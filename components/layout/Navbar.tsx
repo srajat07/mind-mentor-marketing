@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Logo } from "./Logo";
 
 const NAV_LINKS = [
   { name: "Home", href: "/" },
@@ -35,9 +36,7 @@ export function Navbar() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center h-full">
-            <Link href="/" className="text-[28px] tracking-tight font-bold text-[#24234C]">
-              MindMentor
-            </Link>
+            <Logo textSize="text-lg md:text-xl" />
           </div>
 
           {/* Desktop Nav */}

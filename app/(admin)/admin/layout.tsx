@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LayoutDashboard, FileText, ClipboardList, LogOut, Menu, X, Settings2 } from "lucide-react";
 import { useState } from "react";
+import { Logo } from "@/components/layout/Logo";
 
 export default function AdminLayout({
   children,
@@ -26,10 +27,7 @@ export default function AdminLayout({
       {/* Sidebar */}
       <aside className={`bg-[#1e293b] text-white w-64 fixed inset-y-0 left-0 transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} transition-transform duration-200 ease-in-out z-50 lg:relative lg:translate-x-0`}>
         <div className="p-6">
-          <Link href="/admin" className="text-xl font-bold tracking-tight flex items-center gap-2">
-            <span className="bg-blue-500 p-1.5 rounded-lg">MM</span>
-            MindMentor Admin
-          </Link>
+          <Logo isAdmin imageSize={32} textSize="text-lg" href="/admin" className="!gap-2" />
         </div>
         <nav className="mt-6 px-4 space-y-1">
           {navItems.map((item) => {

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Youtube, Twitter, Instagram, Facebook } from "lucide-react";
+import { Logo } from "./Logo";
 
 export function Footer() {
   return (
@@ -7,9 +8,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-1">
-            <Link href="/" className="text-2xl font-bold text-primary mb-6 block">
-              MindMentor
-            </Link>
+            <Logo imageSize={48} textSize="text-2xl" className="mb-6" />
             <p className="text-muted mb-6 text-sm">
               Become the Master of AI. Learn the skills of tomorrow, today.
             </p>
@@ -48,7 +47,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li><Link href="/about" className="text-sm text-muted hover:text-primary">About Us</Link></li>
               <li><Link href="/reviews" className="text-sm text-muted hover:text-primary">Reviews</Link></li>
-              <li><Link href="#" className="text-sm text-muted hover:text-primary">Careers</Link></li>
+              <li><Link href="/admin" className="text-sm text-muted hover:text-primary">Admin CMS</Link></li>
               <li><Link href="#" className="text-sm text-muted hover:text-primary">Contact</Link></li>
             </ul>
           </div>
