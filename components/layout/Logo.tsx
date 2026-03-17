@@ -9,10 +9,10 @@ interface LogoProps {
   isAdmin?: boolean;
 }
 
-export function Logo({ 
-  className = "", 
-  imageSize = 40, 
-  textSize = "text-xl", 
+export function Logo({
+  className = "",
+  imageSize = 40,
+  textSize = "text-xl",
   href = "/",
   isAdmin = false
 }: LogoProps) {
@@ -28,7 +28,7 @@ export function Logo({
         />
       </div>
       <span className={`font-bold text-brand-indigo tracking-wide whitespace-nowrap transition-colors ${textSize}`}>
-        MIND MENTOR {isAdmin && <span className="text-slate-500 font-semibold ml-1">ADMIN</span>}
+        MIND MENTOR
       </span>
     </Link>
   );
