@@ -19,7 +19,7 @@ export default function AdminLayout({
     { name: "Blog Management", href: "/admin/blog", icon: FileText },
     { name: "Categories", href: "/admin/categories", icon: Settings2 },
     { name: "Tags", href: "/admin/tags", icon: Settings2 },
-    { name: "Questionnaire Builder", href: "/admin/quiz", icon: ClipboardList },
+    { name: "Questionnaire Builder", href: "/admin/editor", icon: ClipboardList },
   ];
 
   return (

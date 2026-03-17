@@ -27,3 +27,45 @@ body {
   color: var(--foreground);
   font-family: 'Inter', 'Inter Fallback', sans-serif;
 }
+
+/* ── Quiz Flow Editor: hard override node dimensions ───────────────────── */
+.react-flow__node-question,
+.react-flow__node-statement,
+.react-flow__node-terminal {
+  width: 180px !important;
+  font-size: 10px !important;
+}
+
+.react-flow__node-question input,
+.react-flow__node-question textarea,
+.react-flow__node-question select,
+.react-flow__node-statement input,
+.react-flow__node-statement textarea,
+.react-flow__node-terminal input,
+.react-flow__node-terminal textarea {
+  font-size: 10px !important;
+  padding: 4px !important;
+}
+
+/* ── Selected / hovered edge — brand purple highlight ───────────────────── */
+.react-flow__edge.selected .react-flow__edge-path,
+.react-flow__edge:focus .react-flow__edge-path {
+  stroke: #5A4FCF !important;
+  stroke-width: 3px !important;
+}
+
+.react-flow__edge-path {
+  cursor: pointer;
+}
+
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: #5A4FCF !important;
+  stroke-width: 2.5px !important;
+  opacity: 0.85;
+}
+
+/* Selected edge arrow marker */
+.react-flow__edge.selected .react-flow__arrowhead path {
+  fill: #5A4FCF !important;
+  stroke: #5A4FCF !important;
+}
