@@ -58,19 +58,19 @@ export default function Home() {
 
   const faqs = [
     {
-      question: "What is MindMentor?",
-      answer: "MindMentor is an interactive learning platform designed to help you master AI tools. We provide practical courses and challenges to advance your career and improve your everyday productivity."
+      question: "What is Mind Mentor?",
+      answer: "Mind Mentor is an interactive learning platform designed to help you master AI tools. We provide practical courses and challenges to advance your career and improve your everyday productivity."
     },
     {
-      question: "How to download and use MindMentor?",
-      answer: "MindMentor is a web-based application. You don't need to download anything. Simply open your preferred web browser, navigate to mindmentor.com, and log in to your account. Our platform is fully responsive and works seamlessly across desktops, tablets, and mobile devices."
+      question: "How to download and use Mind Mentor?",
+      answer: "Mind Mentor is a web-based application. You don't need to download anything. Simply open your preferred web browser, navigate to almmai.com, and log in to your account. Our platform is fully responsive and works seamlessly across desktops, tablets, and mobile devices."
     },
     {
-      question: "How to log in into MindMentor?",
+      question: "How to log in into Mind Mentor?",
       answer: "To log in, click the \"Log In\" button at the top right of the screen. Enter the email address and password you used to register."
     },
     {
-      question: "How to cancel MindMentor subscription?",
+      question: "How to cancel Mind Mentor subscription?",
       answer: "You can cancel your subscription at any time by navigating to your Account Settings, selecting the Subscription tab, and clicking \"Cancel Subscription\"."
     }
   ];
@@ -110,8 +110,8 @@ export default function Home() {
       id: 3,
       name: "Cheryl Holiday",
       date: "November 22",
-      title: "MindMentor is a fantastic lea...",
-      text: "MindMentor is a fantastic learning platform—easy to use, well-...",
+      title: "Mind Mentor is a fantastic lea...",
+      text: "Mind Mentor is a fantastic learning platform—easy to use, well-...",
       rating: 5,
     },
     {
@@ -167,7 +167,7 @@ export default function Home() {
       name: "Rock Arenas",
       date: "November 15",
       title: "I'm a 52-year-old dad and AI",
-      text: "I'm a 52-year-old dad of kids in their early twenties. I can't wait for them to come around and start utilizing AI more frequently. My home and work life have been so much easier. Thanks, MindMentor, for helping me explore AI in a broader view. You have helped open my mind.",
+      text: "I'm a 52-year-old dad of kids in their early twenties. I can't wait for them to come around and start utilizing AI more frequently. My home and work life have been so much easier. Thanks, Mind Mentor, for helping me explore AI in a broader view. You have helped open my mind.",
       rating: 5,
     },
     {
@@ -175,7 +175,7 @@ export default function Home() {
       name: "Sarah Jenkins",
       date: "October 10",
       title: "Transitioned to Data Analyst",
-      text: "MindMentor completely changed my career trajectory. The AI courses are practical and easy to follow. I landed a new job within 3 months of starting.",
+      text: "Mind Mentor completely changed my career trajectory. The AI courses are practical and easy to follow. I landed a new job within 3 months of starting.",
       rating: 5,
     },
     {
@@ -203,7 +203,7 @@ export default function Home() {
   ];
 
   const quotes = [
-    "\"Using AI doesn't make you the best... You have to learn to take the best out of it. MindMentor helps you do that, perfectly!\"",
+    "\"Using AI doesn't make you the best... You have to learn to take the best out of it. Mind Mentor helps you do that, perfectly!\"",
     "\"The step-by-step AI training completely changed my workflow. I am saving hours every single day.\"",
     "\"Finally, a course that cuts through the noise. Highly recommended for any serious professional.\""
   ];
@@ -244,7 +244,7 @@ export default function Home() {
             >
               {/* Top Badge */}
               <div className="inline-flex items-center gap-2 bg-[#F3F4FE] text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-8">
-                AI <span className="text-primary/40 font-light">|</span> MindMentor <ArrowRight size={14} className="ml-0.5" />
+                AI <span className="text-primary/40 font-light">|</span> Mind Mentor <ArrowRight size={14} className="ml-0.5" />
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-[62px] font-medium text-[#25244A] mb-8 leading-[1.05] tracking-tight">
@@ -372,10 +372,10 @@ export default function Home() {
             {/* Left Column */}
             <div>
               <h2 className="text-[28px] font-medium leading-[32px] tracking-[-1px] lg:text-[42px] lg:leading-[52px] text-[#24234C] mb-4">
-                Why people love MindMentor
+                Why people love Mind Mentor
               </h2>
               <p className="text-lg md:text-xl text-[#4F5B76] mb-10 max-w-[500px]">
-                Thousands of users trust MindMentor to learn AI. Get the tools, skills, and confidence to grow in your career.
+                Thousands of users trust Mind Mentor to learn AI. Get the tools, skills, and confidence to grow in your career.
               </p>
 
               <div className="space-y-4">
@@ -649,12 +649,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How MindMentor Works Section */}
+      {/* How Mind Mentor Works Section */}
       <section className="py-24 bg-white relative">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20 lg:mb-24">
             <h2 className="text-[28px] font-medium leading-[32px] tracking-[-1px] lg:text-[42px] lg:leading-[52px] text-[#24234C] mb-4">
-              How MindMentor works
+              How Mind Mentor works
             </h2>
             <p className="text-lg text-[#4F5B76] max-w-2xl mx-auto">
               Learn at your own pace and discover how AI and digital tools<br className="hidden md:block" />can help you grow
@@ -832,10 +832,10 @@ export default function Home() {
       <section className="py-24 bg-white relative overflow-hidden">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <h2 className="text-[28px] font-medium leading-[32px] tracking-[-1px] lg:text-[42px] lg:leading-[52px] text-[#24234C] mb-4">
-            MindMentor in action
+            Mind Mentor in action
           </h2>
           <p className="text-lg text-[#4F5B76] mb-16 md:mb-20 max-w-2xl mx-auto">
-            See how MindMentor empowers learners: our success in numbers
+            See how Mind Mentor empowers learners: our success in numbers
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 relative z-20">
@@ -936,7 +936,7 @@ export default function Home() {
                     {/* Right: Signature Area */}
                     <div className="flex items-center gap-14 pr-2">
                       <div className="text-[#5653FE] font-bold text-[13px] opacity-80" style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', letterSpacing: '-0.5px' }}>
-                        MindMentor
+                        Mind Mentor
                       </div>
 
                       <div className="flex flex-col items-center">
@@ -947,7 +947,7 @@ export default function Home() {
                             <line x1="0" y1="28" x2="100" y2="28" stroke="#4F5B76" strokeWidth="0.5" strokeOpacity="0.5" />
                           </svg>
                         </div>
-                        <span className="text-[5px] text-[#4F5B76] pt-1.5 w-16 text-center tracking-wide">Founders, MindMentor</span>
+                        <span className="text-[5px] text-[#4F5B76] pt-1.5 w-16 text-center tracking-wide">Founders, Mind Mentor</span>
                       </div>
                     </div>
                   </div>
@@ -966,7 +966,7 @@ export default function Home() {
           {/* Header Area */}
           <div className="flex flex-col items-center text-center mb-16">
             <h2 className="text-[36px] md:text-4xl font-semibold text-[#24234C] mb-6">
-              See how MindMentor changes lives
+              See how Mind Mentor changes lives
             </h2>
             <div className="flex flex-col md:flex-row items-center gap-4">
               <span className="text-[26px] font-medium text-[#24234C]">Excellent</span>
@@ -1215,7 +1215,7 @@ export default function Home() {
                 Frequently asked questions
               </h2>
               <p className="text-[#4F5B76] text-lg mt-6 leading-relaxed">
-                Find answers to common questions about MindMentor
+                Find answers to common questions about Mind Mentor
               </p>
             </div>
 
@@ -1408,7 +1408,7 @@ export default function Home() {
               {/* Left Side: Copy & CTA */}
               <div className="max-w-xl mb-10 md:mb-18">
                 <h2 className="text-4xl md:text-[48px] leading-[1.1] font-semibold text-[#24234C] mb-6 tracking-tight">
-                  Start your AI journey with MindMentor today!
+                  Start your AI journey with Mind Mentor today!
                 </h2>
                 <p className="text-[#4F5B76] text-lg md:text-xl mb-10 leading-relaxed">
                   Learn today, take control of your future, and build new skills in AI and digital tools

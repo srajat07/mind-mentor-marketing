@@ -32,7 +32,7 @@ const initialNodes: any[] = [
     position: { x: 250, y: 80 },
     data: {
       isStart: true,
-      title: "Welcome to MindMentor",
+      title: "Welcome to Mind Mentor",
       desc: "Let's find your AI learning path.",
     },
   },
@@ -123,7 +123,7 @@ function FlowEditor() {
           },
         }));
         setNodes(hydrated);
-        
+
         // Migrate legacy 'opt-' handle IDs to 'handle-' format
         const migratedEdges = (resp.edges || []).map((edge: any) => {
           if (edge.sourceHandle && edge.sourceHandle.startsWith("opt-")) {
@@ -131,7 +131,7 @@ function FlowEditor() {
           }
           return edge;
         });
-        
+
         // Delay setting edges to ensure nodes (and their handles) are rendered first
         setTimeout(() => {
           setEdges(migratedEdges);

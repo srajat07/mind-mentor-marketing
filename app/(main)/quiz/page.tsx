@@ -34,12 +34,12 @@ function SlideImage({
 }
 
 export default function PublicQuizPlayer() {
-  const [loading, setLoading]       = useState(true);
-  const [quizData, setQuizData]     = useState<{ nodes: any[]; edges: any[] } | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [quizData, setQuizData] = useState<{ nodes: any[]; edges: any[] } | null>(null);
   const [currentNodeId, setCurrentNodeId] = useState<string | null>(null);
-  const [history, setHistory]       = useState<string[]>([]);
+  const [history, setHistory] = useState<string[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [direction, setDirection]   = useState(1); // 1 = forward, -1 = backward
+  const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
 
   // ── 1. Fetch on load ──────────────────────────────────────────────────────
   useEffect(() => {
@@ -183,13 +183,13 @@ export default function PublicQuizPlayer() {
     );
 
   const isStatement = currentNode.type === "statement";
-  const isTerminal  = currentNode.type === "terminal";
+  const isTerminal = currentNode.type === "terminal";
 
   // ── Render ────────────────────────────────────────────────────────────────
   return (
     // Z-[60] to overlay the global site header (z-50) from (main)/layout
     <div className="fixed inset-0 bg-[#F9FAFB] z-[60] overflow-y-auto selection:bg-[#5A4FCF]/10 font-sans h-full">
-      
+
       {/* 2. SLIDE-OUT SIDEBAR (Informational only) - Higher Z than Header */}
       <AnimatePresence>
         {isMenuOpen && (
@@ -267,9 +267,8 @@ export default function PublicQuizPlayer() {
             </button>
             <button
               onClick={handleBack}
-              className={`flex items-center gap-1.5 px-3 py-2 text-sm font-bold text-slate-400 hover:text-[#5A4FCF] transition-all active:scale-95 ${
-                history.length === 0 ? "opacity-0 pointer-events-none" : "opacity-100"
-              }`}
+              className={`flex items-center gap-1.5 px-3 py-2 text-sm font-bold text-slate-400 hover:text-[#5A4FCF] transition-all active:scale-95 ${history.length === 0 ? "opacity-0 pointer-events-none" : "opacity-100"
+                }`}
             >
               <ChevronLeft size={18} />
               <span className="hidden sm:inline uppercase tracking-widest text-[11px]">Back</span>
@@ -320,7 +319,7 @@ export default function PublicQuizPlayer() {
             {/* Statement Slide */}
             {isStatement && (() => {
               const { title, desc, image } = currentNode.data ?? {};
-              const hasImage  = !!image;
+              const hasImage = !!image;
               const imgOnLeft = stepIndex % 2 === 0;
               const isStartSlide = history.length === 0 || currentNode.data?.isStart;
               const btnLabel = isStartSlide ? "START" : "CONTINUE";
@@ -451,7 +450,7 @@ export default function PublicQuizPlayer() {
 
       {/* Footer */}
       <div className="pb-10 mt-auto text-center">
-        <p className="text-[10px] font-bold text-slate-300 uppercase tracking-[0.22em]">Powered by MindMentor AI</p>
+        <p className="text-[10px] font-bold text-slate-300 uppercase tracking-[0.22em]">Powered by Mind Mentor AI</p>
       </div>
     </div>
   );

@@ -29,7 +29,7 @@ const initialNodes: any[] = [
     id: "node-1",
     type: "statement",
     position: { x: 100, y: 100 },
-    data: { title: "Welcome to MindMentor", desc: "Let's find your AI path." },
+    data: { title: "Welcome to Mind Mentor", desc: "Let's find your AI path." },
   },
 ];
 

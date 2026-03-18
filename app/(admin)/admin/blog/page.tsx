@@ -25,7 +25,7 @@ export default function BlogManagement() {
     content: "",
     status: "draft",
     author: {
-      name: "MindMentor Admin",
+      name: "Mind Mentor Admin",
       avatar: "AI"
     }
   });
@@ -43,7 +43,7 @@ export default function BlogManagement() {
     setPosts(blogsData);
     setCategories(catsData);
     setTags(tagsData);
-    
+
     // Initialize default category if none selected and categories exist
     if (catsData.length > 0 && !formData.category) {
       setFormData(prev => ({ ...prev, category: catsData[0]._id }));
@@ -52,16 +52,16 @@ export default function BlogManagement() {
 
   const filteredPosts = posts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         post.excerpt?.toLowerCase().includes(searchQuery.toLowerCase());
+      post.excerpt?.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesStatus = statusFilter === "all" || post.status === statusFilter;
     const matchesCategory = categoryFilter === "all" || post.category?._id === categoryFilter;
-    
+
     return matchesSearch && matchesStatus && matchesCategory;
   });
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    
+
     // Ensure image logic
     const sanitizedData = { ...formData };
     if (!sanitizedData.imageUrl) {
@@ -111,7 +111,7 @@ export default function BlogManagement() {
       excerpt: "",
       content: "",
       status: "draft",
-      author: { name: "MindMentor Admin", avatar: "AI" }
+      author: { name: "Mind Mentor Admin", avatar: "AI" }
     });
     setIsModalOpen(false);
   }
@@ -120,7 +120,7 @@ export default function BlogManagement() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold text-slate-800">Articles</h2>
-        <button 
+        <button
           onClick={() => { resetForm(); setIsModalOpen(true); }}
           className="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 hover:bg-blue-700 transition-all shadow-sm shadow-blue-200"
         >
@@ -133,15 +133,15 @@ export default function BlogManagement() {
       <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="relative md:col-span-2">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-          <input 
-            type="text" 
+          <input
+            type="text"
             placeholder="Search by title or excerpt..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500"
           />
         </div>
-        <select 
+        <select
           value={categoryFilter}
           onChange={(e) => setCategoryFilter(e.target.value)}
           className="px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/10"
@@ -151,7 +151,7 @@ export default function BlogManagement() {
             <option key={cat._id} value={cat._id}>{cat.name}</option>
           ))}
         </select>
-        <select 
+        <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
           className="px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/10"
@@ -193,11 +193,10 @@ export default function BlogManagement() {
                   </span>
                 </td>
                 <td className="px-6 py-4">
-                  <span className={`inline-flex items-center gap-1.5 px-2 py-1 rounded text-xs font-bold border ${
-                    post.status === "published" 
-                    ? "bg-emerald-50 text-emerald-700 border-emerald-100" 
+                  <span className={`inline-flex items-center gap-1.5 px-2 py-1 rounded text-xs font-bold border ${post.status === "published"
+                    ? "bg-emerald-50 text-emerald-700 border-emerald-100"
                     : "bg-amber-50 text-amber-700 border-amber-100"
-                  }`}>
+                    }`}>
                     <div className={`w-1.5 h-1.5 rounded-full ${post.status === "published" ? "bg-emerald-500" : "bg-amber-500"}`}></div>
                     {post.status.charAt(0).toUpperCase() + post.status.slice(1)}
                   </span>
@@ -238,23 +237,23 @@ export default function BlogManagement() {
                 <div className="md:col-span-2 space-y-6">
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-slate-700">Article Title</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       required
-                      placeholder="Enter title..." 
+                      placeholder="Enter title..."
                       value={formData.title}
                       onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                      className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 outline-none text-lg font-medium" 
+                      className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 outline-none text-lg font-medium"
                     />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-slate-700">Excerpt</label>
-                    <textarea 
-                      rows={3} 
-                      placeholder="Write a short teaser..." 
+                    <textarea
+                      rows={3}
+                      placeholder="Write a short teaser..."
                       value={formData.excerpt}
                       onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
-                      className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 outline-none resize-none" 
+                      className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 outline-none resize-none"
                     />
                   </div>
                 </div>
@@ -262,7 +261,7 @@ export default function BlogManagement() {
                   <div className="space-y-4">
                     <div className="space-y-2">
                       <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Status</label>
-                      <select 
+                      <select
                         value={formData.status}
                         onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
                         className="w-full px-4 py-2 border border-slate-200 rounded-lg bg-white"
@@ -273,7 +272,7 @@ export default function BlogManagement() {
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Category</label>
-                      <select 
+                      <select
                         required
                         value={formData.category}
                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
@@ -292,12 +291,12 @@ export default function BlogManagement() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-700">Featured Image URL</label>
-                  <input 
-                    type="text" 
-                    placeholder="https://images.unsplash.com/..." 
+                  <input
+                    type="text"
+                    placeholder="https://images.unsplash.com/..."
                     value={formData.imageUrl}
                     onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
-                    className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 outline-none" 
+                    className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 outline-none"
                   />
                 </div>
                 <div className="space-y-2">
@@ -310,16 +309,15 @@ export default function BlogManagement() {
                           key={tag._id}
                           type="button"
                           onClick={() => {
-                            const newTags = isSelected 
+                            const newTags = isSelected
                               ? formData.tags.filter(id => id !== tag._id)
                               : [...formData.tags, tag._id];
                             setFormData({ ...formData, tags: newTags });
                           }}
-                          className={`px-3 py-1 rounded-full text-xs font-bold transition-all border ${
-                            isSelected 
-                            ? "bg-blue-600 border-blue-600 text-white" 
+                          className={`px-3 py-1 rounded-full text-xs font-bold transition-all border ${isSelected
+                            ? "bg-blue-600 border-blue-600 text-white"
                             : "bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300"
-                          }`}
+                            }`}
                         >
                           {tag.name}
                         </button>
@@ -331,25 +329,25 @@ export default function BlogManagement() {
 
               <div className="space-y-2">
                 <label className="text-sm font-bold text-slate-700">Article Content (Markdown/HTML)</label>
-                <textarea 
-                  rows={12} 
+                <textarea
+                  rows={12}
                   required
-                  placeholder="Start writing your masterwork..." 
+                  placeholder="Start writing your masterwork..."
                   value={formData.content}
                   onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                  className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 outline-none font-mono text-sm" 
+                  className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 outline-none font-mono text-sm"
                 />
               </div>
             </div>
             <div className="p-6 border-t border-slate-100 flex items-center justify-end gap-3 bg-slate-50 rounded-b-2xl">
-              <button 
+              <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
                 className="px-6 py-2 rounded-lg font-bold text-slate-600 hover:bg-slate-200 transition-all"
               >
                 Cancel
               </button>
-              <button 
+              <button
                 type="submit"
                 className="bg-blue-600 text-white px-8 py-2 rounded-lg font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-200"
               >

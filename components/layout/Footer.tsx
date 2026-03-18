@@ -35,10 +35,11 @@ export function Footer() {
           <div>
             <h3 className="font-semibold text-foreground mb-4">Learn</h3>
             <ul className="space-y-3">
-              <li><Link href="#" className="text-sm text-muted hover:text-primary">AI Courses</Link></li>
-              <li><Link href="#" className="text-sm text-muted hover:text-primary">Digital Tools</Link></li>
-              <li><Link href="#" className="text-sm text-muted hover:text-primary">Career Skills</Link></li>
-              <li><Link href="#" className="text-sm text-muted hover:text-primary">28-Day Challenge</Link></li>
+              <li><Link href="https://www.almmai.com#courses" className="text-sm text-muted hover:text-primary">AI Courses</Link></li>
+              <li><Link href="https://www.almmai.com#placements" className="text-sm text-muted hover:text-primary">Placements</Link></li>
+              <li><Link href="https://www.almmai.com#ai-interview" className="text-sm text-muted hover:text-primary">AI Interviews</Link></li>
+              <li><Link href="https://www.almmai.com#mentorship" className="text-sm text-muted hover:text-primary">Career Skills</Link></li>
+              {/* <li><Link href="#" className="text-sm text-muted hover:text-primary">28-Day Challenge</Link></li> */}
             </ul>
           </div>
 
@@ -46,9 +47,9 @@ export function Footer() {
             <h3 className="font-semibold text-foreground mb-4">Company</h3>
             <ul className="space-y-3">
               <li><Link href="/about" className="text-sm text-muted hover:text-primary">About Us</Link></li>
+              <li><Link href="/blog" className="text-sm text-muted hover:text-primary">Blog</Link></li>
               <li><Link href="/reviews" className="text-sm text-muted hover:text-primary">Reviews</Link></li>
               <li><Link href="/admin" className="text-sm text-muted hover:text-primary">Admin CMS</Link></li>
-              <li><Link href="#" className="text-sm text-muted hover:text-primary">Contact</Link></li>
             </ul>
           </div>
 
@@ -56,19 +57,20 @@ export function Footer() {
             <h3 className="font-semibold text-foreground mb-4">Support</h3>
             <ul className="space-y-3">
               <li><Link href="/support" className="text-sm text-muted hover:text-primary">Help Center / FAQ</Link></li>
-              <li><Link href="#" className="text-sm text-muted hover:text-primary">Terms of Service</Link></li>
-              <li><Link href="#" className="text-sm text-muted hover:text-primary">Privacy Policy</Link></li>
+              <li><Link href="https://www.almmai.com/terms" className="text-sm text-muted hover:text-primary">Terms of Service</Link></li>
+              <li><Link href="https://www.almmai.com/policy" className="text-sm text-muted hover:text-primary">Privacy Policy</Link></li>
+              <li><Link href="https://www.almmai.com/refund" className="text-sm text-muted hover:text-primary">Refund Policy</Link></li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted">
-            &copy; {new Date().getFullYear()} MindMentor. All rights reserved.
+            &copy; {new Date().getFullYear()} Mind Mentor. All rights reserved.
           </p>
           <div className="flex space-x-4">
-            <Link href="#" className="text-sm text-muted hover:text-primary">Terms</Link>
-            <Link href="#" className="text-sm text-muted hover:text-primary">Privacy</Link>
+            <Link href="https://www.almmai.com/terms" className="text-sm text-muted hover:text-primary">Terms</Link>
+            <Link href="https://www.almmai.com/policy" className="text-sm text-muted hover:text-primary">Privacy</Link>
           </div>
         </div>
       </div>

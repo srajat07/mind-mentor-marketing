@@ -158,7 +158,7 @@ export default function BlogPostDetail({ params }: { params: Promise<{ slug: str
                   href="/"
                   className="bg-[#5653FE] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#4845E5] transition-all shadow-lg shadow-[#5653FE]/20 hover:scale-105 active:scale-95"
                 >
-                  Join MindMentor
+                  Join Mind Mentor
                 </Link>
               </div>
             </div>

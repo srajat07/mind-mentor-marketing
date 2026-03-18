@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "MindMentor Marketing | AI, Digital Tools & Career Growth",
-  description: "Master AI, Digital Tools, and Career Skills with MindMentor Marketing. Empowering your digital journey.",
+  title: "Mind Mentor | AI, Digital Tools & Career Growth",
+  description: "Master AI, Digital Tools, and Career Skills with Mind Mentor. Empowering your digital journey.",
   icons: {
     icon: '/assets/images/mindmentor-logo.png',
     apple: '/assets/images/mindmentor-logo.png',

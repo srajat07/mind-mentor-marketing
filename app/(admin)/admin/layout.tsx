@@ -27,11 +27,9 @@ export default function AdminLayout({
     <div className="min-h-screen bg-slate-50 flex">
       {/* Sidebar */}
       <aside
-        className={`bg-[#1e293b] text-white fixed inset-y-0 left-0 transform ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-all duration-300 ease-in-out z-50 lg:relative lg:translate-x-0 ${
-          isCollapsed ? "w-20" : "w-64"
-        }`}
+        className={`bg-[#1e293b] text-white fixed inset-y-0 left-0 transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          } transition-all duration-300 ease-in-out z-50 lg:relative lg:translate-x-0 ${isCollapsed ? "w-20" : "w-64"
+          }`}
       >
         <div className={`p-4 flex items-center ${isCollapsed ? "justify-center" : "justify-between"}`}>
           {!isCollapsed && <Logo isAdmin imageSize={32} textSize="text-lg" href="/admin" className="!gap-2" />}
@@ -52,11 +50,10 @@ export default function AdminLayout({
                 key={item.href}
                 href={item.href}
                 title={isCollapsed ? item.name : ""}
-                className={`flex items-center gap-3 py-2.5 rounded-lg transition-all duration-200 ${
-                  isActive
+                className={`flex items-center gap-3 py-2.5 rounded-lg transition-all duration-200 ${isActive
                     ? "bg-[#5A4FCF] text-white shadow-lg shadow-[#5A4FCF]/20"
                     : "text-slate-400 hover:bg-slate-800 hover:text-white"
-                } ${isCollapsed ? "justify-center px-0" : "px-4"}`}
+                  } ${isCollapsed ? "justify-center px-0" : "px-4"}`}
               >
                 <item.icon size={22} className="shrink-0" />
                 {!isCollapsed && (
@@ -71,9 +68,8 @@ export default function AdminLayout({
 
         <div className="absolute bottom-0 w-full p-4 border-t border-slate-700">
           <button
-            className={`flex items-center gap-3 px-4 py-3 w-full text-slate-400 hover:text-red-400 transition-colors ${
-              isCollapsed ? "justify-center px-0" : ""
-            }`}
+            className={`flex items-center gap-3 px-4 py-3 w-full text-slate-400 hover:text-red-400 transition-colors ${isCollapsed ? "justify-center px-0" : ""
+              }`}
           >
             <LogOut size={20} className="shrink-0" />
             {!isCollapsed && (
@@ -90,14 +86,14 @@ export default function AdminLayout({
         {/* Header */}
         <header className="bg-white border-b border-slate-200 h-16 flex items-center justify-between px-6 shrink-0">
           <div className="flex items-center gap-4">
-            <button 
+            <button
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
               className="lg:hidden text-slate-600 p-2 hover:bg-slate-100 rounded-lg"
             >
               {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
             <h1 className="text-lg font-semibold text-slate-800">
-              {navItems.find(item => pathname === item.href)?.name || "MindMentor Admin"}
+              {navItems.find(item => pathname === item.href)?.name || "Mind Mentor Admin"}
             </h1>
           </div>
           <div className="flex items-center gap-4">

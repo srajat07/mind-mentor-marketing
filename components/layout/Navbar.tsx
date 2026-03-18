@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { name: "Blog", href: "/blog" },
   { name: "About", href: "/about" },
   { name: "Reviews", href: "/reviews" },
+  { name: "Support", href: "/support" },
 ];
 
 export function Navbar() {

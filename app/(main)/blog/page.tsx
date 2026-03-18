@@ -29,7 +29,7 @@ function BlogCard({ post }: { post: any }) {
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-[#5653FE]/10 to-[#5653FE]/5 flex items-center justify-center">
-            <span className="text-[#5653FE] font-bold text-lg">MindMentor AI</span>
+            <span className="text-[#5653FE] font-bold text-lg">Mind Mentor AI</span>
           </div>
         )}
         <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg shadow-sm z-10">
@@ -148,7 +148,7 @@ export default function BlogPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-6xl font-bold text-[#24234C] mb-6 tracking-tight">
-              MindMentor Blog
+              Mind Mentor Blog
             </h1>
             <p className="text-xl text-[#4F5B76] mb-10 leading-relaxed">
               Practical guides on AI tools, automation, and what's changing across industries. Learn how to stay ahead in the era of artificial intelligence.

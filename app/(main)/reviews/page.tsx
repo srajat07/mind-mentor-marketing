@@ -12,7 +12,7 @@ export default function ReviewsPage() {
         <div className="max-w-4xl mx-auto flex flex-col items-center">
 
           <h1 className="text-4xl md:text-[52px] leading-[1.15] font-bold text-[#24234C] mb-12 tracking-tight">
-            MindMentor Reviews:<br className="hidden sm:block" />
+            Mind Mentor Reviews:<br className="hidden sm:block" />
             119,000+ Real User Testimonials
           </h1>
 
@@ -34,7 +34,7 @@ export default function ReviewsPage() {
           </div>
 
           <p className="text-[#4F5B76] text-lg leading-relaxed max-w-3xl mx-auto">
-            Real people. Real progress. At MindMentor, we're proud that our learners don't just <span className="italic">finish</span> our lessons — they actually use them to get ahead in their 9-5, studies, and side hustles. But don't just take our word for it. Here's what our community of more than 800,000 is saying across <span className="font-bold text-[#24234C]">Google Play</span> and <span className="font-bold text-[#24234C]">Trustpilot</span>.
+            Real people. Real progress. At Mind Mentor, we're proud that our learners don't just <span className="italic">finish</span> our lessons — they actually use them to get ahead in their 9-5, studies, and side hustles. But don't just take our word for it. Here's what our community of more than 800,000 is saying across <span className="font-bold text-[#24234C]">Google Play</span> and <span className="font-bold text-[#24234C]">Trustpilot</span>.
           </p>
 
         </div>
@@ -240,7 +240,7 @@ export default function ReviewsPage() {
               </h2>
 
               <p className="text-[#4F5B76] text-lg">
-                So... what can you expect after joining MindMentor?
+                So... what can you expect after joining Mind Mentor?
               </p>
             </div>
 
@@ -328,7 +328,7 @@ export default function ReviewsPage() {
 
             {/* Box 4 */}
             <div className="bg-white rounded-2xl border border-[#E3E3E3] p-8 md:p-10 shadow-[0_2px_15px_rgb(0,0,0,0.02)]">
-              <h3 className="font-bold text-[#24234C] text-[18px] mb-4 leading-normal">Is MindMentor worth it compared to free YouTube tutorials?</h3>
+              <h3 className="font-bold text-[#24234C] text-[18px] mb-4 leading-normal">Is Mind Mentor worth it compared to free YouTube tutorials?</h3>
               <p className="text-[#4F5B76] leading-relaxed text-[16px]">
                 Here's the difference: we make learning structured, consistent, and motivating. That's why people actually finish our lessons — and see results.
               </p>

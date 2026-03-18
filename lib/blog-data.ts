@@ -18,11 +18,11 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: 1,
     slug: "mind-mentor-28-day-ai-challenge",
-    title: "The MindMentor 28-Day AI Challenge: Your Complete Mastery Roadmap for 2026",
+    title: "The Mind Mentor 28-Day AI Challenge: Your Complete Mastery Roadmap for 2026",
     category: "AI",
     excerpt: "A structured 28-day plan for busy professionals to become confident with AI tools through short daily challenges.",
     author: {
-      name: "MindMentor Editorial Team",
+      name: "Mind Mentor Editorial Team",
       avatar: "CE",
     },
     date: "Feb 18, 2026",
@@ -30,7 +30,7 @@ export const BLOG_POSTS: BlogPost[] = [
     imageUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
     content: `
       <h2>Why the 28-Day Challenge?</h2>
-      <p>In 2026, AI isn't just a buzzword; it's the engine of productivity. But most people are still stuck at the "How do I start?" phase. The MindMentor 28-Day Challenge is designed to move you from curious to master in less than a month.</p>
+      <p>In 2026, AI isn't just a buzzword; it's the engine of productivity. But most people are still stuck at the "How do I start?" phase. The Mind Mentor 28-Day Challenge is designed to move you from curious to master in less than a month.</p>
       
       <h2>What You'll Learn</h2>
       <p>Each day, you'll spend just 10 minutes on a specific task. We cover everything from advanced prompting to building your own specialized GPTs.</p>
