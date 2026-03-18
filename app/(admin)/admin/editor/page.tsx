@@ -282,7 +282,7 @@ function FlowEditor() {
       y: window.innerHeight / 2,
     });
 
-    const newNode = {
+    const newNode: any = {
       id: newNodeId,
       type,
       position,
@@ -300,7 +300,7 @@ function FlowEditor() {
       },
     };
 
-    setNodes((nds) => nds.map((n) => ({ ...n, selected: false })).concat(newNode));
+    setNodes((nds) => [...nds.map((n) => ({ ...n, selected: false })), newNode]);
     setTimeout(() => fitView({ padding: 2.5, duration: 400 }), 80);
   };
 
