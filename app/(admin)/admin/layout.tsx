@@ -35,7 +35,7 @@ export default function AdminLayout({
           {!isCollapsed && <Logo isAdmin imageSize={32} textSize="text-lg" href="/admin" className="!gap-2" />}
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors hidden lg:block"
+            className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors hidden lg:block cursor-pointer"
             title={isCollapsed ? "Expand" : "Collapse"}
           >
             <Menu size={20} />
@@ -51,8 +51,8 @@ export default function AdminLayout({
                 href={item.href}
                 title={isCollapsed ? item.name : ""}
                 className={`flex items-center gap-3 py-2.5 rounded-lg transition-all duration-200 ${isActive
-                    ? "bg-[#5A4FCF] text-white shadow-lg shadow-[#5A4FCF]/20"
-                    : "text-slate-400 hover:bg-slate-800 hover:text-white"
+                  ? "bg-[#5A4FCF] text-white shadow-lg shadow-[#5A4FCF]/20"
+                  : "text-slate-400 hover:bg-slate-800 hover:text-white"
                   } ${isCollapsed ? "justify-center px-0" : "px-4"}`}
               >
                 <item.icon size={22} className="shrink-0" />

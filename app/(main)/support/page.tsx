@@ -27,7 +27,7 @@ export default function SupportPage() {
             How can we help you today?
           </p>
         </div>
-        
+
         <div className="space-y-6">
           {faqs.map((faq, i) => (
             <div key={i} className="bg-white p-6 rounded-2xl border border-border shadow-sm">
@@ -36,11 +36,11 @@ export default function SupportPage() {
             </div>
           ))}
         </div>
-        
+
         <div className="mt-16 bg-primary/5 p-8 rounded-3xl border border-primary/20 text-center">
           <h2 className="text-2xl font-bold text-foreground mb-4">Still need help?</h2>
           <p className="text-muted mb-6 mb-8">Our support team is available 24/7 to assist you with any questions.</p>
-          <button className="px-6 py-3 rounded-full bg-white text-primary border border-primary font-semibold hover:bg-primary/5 transition-all">
+          <button className="px-6 py-3 rounded-full bg-white text-primary border border-primary font-semibold hover:bg-primary/5 transition-all cursor-pointer">
             Contact Support
           </button>
         </div>

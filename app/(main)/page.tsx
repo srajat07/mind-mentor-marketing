@@ -539,7 +539,7 @@ export default function Home() {
             {/* Left Arrow */}
             <button
               onClick={slideLeft}
-              className="p-2 absolute left-0 lg:-left-12 top-1/2 -translate-y-1/2 text-[#24234C] hover:text-primary transition-colors z-10 bg-white/80 rounded-full"
+              className="p-2 absolute left-0 lg:-left-12 top-1/2 -translate-y-1/2 text-[#24234C] hover:text-primary transition-colors z-10 bg-white/80 rounded-full cursor-pointer"
               aria-label="Previous options"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
@@ -572,7 +572,7 @@ export default function Home() {
             {/* Right Arrow */}
             <button
               onClick={slideRight}
-              className="p-2 absolute right-0 lg:-right-12 top-1/2 -translate-y-1/2 text-[#24234C] hover:text-primary transition-colors z-10 bg-white/80 rounded-full"
+              className="p-2 absolute right-0 lg:-right-12 top-1/2 -translate-y-1/2 text-[#24234C] hover:text-primary transition-colors z-10 bg-white/80 rounded-full cursor-pointer"
               aria-label="Next options"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
@@ -989,14 +989,14 @@ export default function Home() {
             <div className="flex gap-2">
               <button
                 onClick={scrollLeftNav}
-                className="w-10 h-10 rounded-full border border-[#E3E3E3] flex items-center justify-center text-[#24234C] hover:bg-gray-50 transition-colors"
+                className="w-10 h-10 rounded-full border border-[#E3E3E3] flex items-center justify-center text-[#24234C] hover:bg-gray-50 transition-colors cursor-pointer"
                 aria-label="Previous testimonials"
               >
                 <ChevronLeft size={20} strokeWidth={2} />
               </button>
               <button
                 onClick={scrollRightNav}
-                className="w-10 h-10 rounded-full border border-[#E3E3E3] flex items-center justify-center text-[#24234C] hover:bg-gray-50 transition-colors"
+                className="w-10 h-10 rounded-full border border-[#E3E3E3] flex items-center justify-center text-[#24234C] hover:bg-gray-50 transition-colors cursor-pointer"
                 aria-label="Next testimonials"
               >
                 <ChevronRight size={20} strokeWidth={2} />
@@ -1041,7 +1041,7 @@ export default function Home() {
                   <p className="text-[#4F5B76] text-[14px] leading-relaxed relative">
                     {review.text}
                   </p>
-                  <button className="text-[#00B67A] text-[13px] font-medium underline underline-offset-2 mt-4 hover:text-[#009b68] transition-colors">
+                  <button className="text-[#00B67A] text-[13px] font-medium underline underline-offset-2 mt-4 hover:text-[#009b68] transition-colors cursor-pointer">
                     Read more
                   </button>
                 </div>
@@ -1329,7 +1329,7 @@ export default function Home() {
             {/* Left Nav */}
             <button
               onClick={scrollLeftNavNarrow}
-              className="absolute -left-6 lg:-left-12 z-20 w-10 h-10 bg-white rounded-full border border-[#E3E3E3] flex items-center justify-center text-[#4F5B76] hover:bg-gray-50 hover:text-[#24234C] shadow-sm transition-all"
+              className="absolute -left-6 lg:-left-12 z-20 w-10 h-10 bg-white rounded-full border border-[#E3E3E3] flex items-center justify-center text-[#4F5B76] hover:bg-gray-50 hover:text-[#24234C] shadow-sm transition-all cursor-pointer"
               aria-label="Previous narrow testimonials"
             >
               <ChevronLeft size={20} strokeWidth={2} />
@@ -1377,7 +1377,7 @@ export default function Home() {
             {/* Right Nav */}
             <button
               onClick={scrollRightNavNarrow}
-              className="absolute -right-6 lg:-right-12 z-20 w-10 h-10 bg-white rounded-full border border-[#E3E3E3] flex items-center justify-center text-[#4F5B76] hover:bg-gray-50 hover:text-[#24234C] shadow-sm transition-all"
+              className="absolute -right-6 lg:-right-12 z-20 w-10 h-10 bg-white rounded-full border border-[#E3E3E3] flex items-center justify-center text-[#4F5B76] hover:bg-gray-50 hover:text-[#24234C] shadow-sm transition-all cursor-pointer"
               aria-label="Next narrow testimonials"
             >
               <ChevronRight size={20} strokeWidth={2} />

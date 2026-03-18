@@ -179,7 +179,7 @@ export default function BlogPage() {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`whitespace-nowrap text-[15px] font-semibold transition-all relative py-2 ${activeCategory === category
+                className={`whitespace-nowrap text-[15px] font-semibold cursor-pointer transition-all relative py-2 ${activeCategory === category
                   ? "text-[#5653FE]"
                   : "text-[#4F5B76] hover:text-[#24234C]"
                   }`}

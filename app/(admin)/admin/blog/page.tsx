@@ -122,7 +122,7 @@ export default function BlogManagement() {
         <h2 className="text-2xl font-bold text-slate-800">Articles</h2>
         <button
           onClick={() => { resetForm(); setIsModalOpen(true); }}
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 hover:bg-blue-700 transition-all shadow-sm shadow-blue-200"
+          className="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 hover:bg-blue-700 transition-all shadow-sm shadow-blue-200 cursor-pointer"
         >
           <Plus size={20} />
           Create New Post
@@ -203,10 +203,10 @@ export default function BlogManagement() {
                 </td>
                 <td className="px-6 py-4 text-right">
                   <div className="flex items-center justify-end gap-2">
-                    <button onClick={() => handleEdit(post)} className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all">
+                    <button onClick={() => handleEdit(post)} className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all cursor-pointer">
                       <Edit2 size={18} />
                     </button>
-                    <button onClick={() => handleDelete(post._id)} className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all">
+                    <button onClick={() => handleDelete(post._id)} className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all cursor-pointer">
                       <Trash2 size={18} />
                     </button>
                   </div>
@@ -314,7 +314,7 @@ export default function BlogManagement() {
                               : [...formData.tags, tag._id];
                             setFormData({ ...formData, tags: newTags });
                           }}
-                          className={`px-3 py-1 rounded-full text-xs font-bold transition-all border ${isSelected
+                          className={`px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer border ${isSelected
                             ? "bg-blue-600 border-blue-600 text-white"
                             : "bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300"
                             }`}
@@ -343,13 +343,13 @@ export default function BlogManagement() {
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="px-6 py-2 rounded-lg font-bold text-slate-600 hover:bg-slate-200 transition-all"
+                className="px-6 py-2 rounded-lg font-bold text-slate-600 hover:bg-slate-200 transition-all cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="bg-blue-600 text-white px-8 py-2 rounded-lg font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-200"
+                className="bg-blue-600 text-white px-8 py-2 rounded-lg font-bold hover:bg-blue-700 transition-all cursor-pointer shadow-lg shadow-blue-200"
               >
                 {editingId ? "Update Article" : "Save Article"}
               </button>

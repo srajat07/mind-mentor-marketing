@@ -52,11 +52,11 @@ export default function AdminDashboard() {
         <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
           <h2 className="text-xl font-bold text-slate-800 mb-6">Shortcuts</h2>
           <div className="grid grid-cols-2 gap-4">
-            <Link href="/admin/blog" className="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-xl border border-dashed border-slate-300 hover:border-blue-500 hover:bg-blue-50 transition-all group">
+            <Link href="/admin/blog" className="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-xl border border-dashed border-slate-300 hover:border-blue-500 hover:bg-blue-50 transition-all cursor-pointer group">
               <FileText className="text-slate-400 group-hover:text-blue-500 mb-2" size={32} />
               <span className="text-sm font-semibold text-slate-600 group-hover:text-blue-600 text-center">Manage Articles</span>
             </Link>
-            <Link href="/admin/quiz" className="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-xl border border-dashed border-slate-300 hover:border-purple-500 hover:bg-purple-50 transition-all group">
+            <Link href="/admin/quiz" className="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-xl border border-dashed border-slate-300 hover:border-purple-500 hover:bg-purple-50 transition-all cursor-pointer group">
               <ClipboardList className="text-slate-400 group-hover:text-purple-500 mb-2" size={32} />
               <span className="text-sm font-semibold text-slate-600 group-hover:text-purple-600 text-center">Update Quizzes</span>
             </Link>

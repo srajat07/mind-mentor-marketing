@@ -18,7 +18,7 @@ function DeleteBtn({ onDelete }: { onDelete?: () => void }) {
         padding: 0, lineHeight: 1,
         boxShadow: "0 1px 3px rgba(0,0,0,0.12)",
       }}
-      className="opacity-0 group-hover/node:opacity-100 hover:!text-red-500 hover:!border-red-300 transition-all"
+      className="opacity-0 group-hover/node:opacity-100 hover:!text-red-500 hover:!border-red-300 transition-all cursor-pointer"
     >
       <X size={7} />
     </button>
@@ -26,9 +26,9 @@ function DeleteBtn({ onDelete }: { onDelete?: () => void }) {
 }
 
 // ── Handle styles — 10×10 so they're clickable on a small node ────────────
-const TOP_H:    React.CSSProperties = { backgroundColor: "#5A4FCF", width: 10, height: 10, top:    -4 };
+const TOP_H: React.CSSProperties = { backgroundColor: "#5A4FCF", width: 10, height: 10, top: -4 };
 const BOTTOM_H: React.CSSProperties = { backgroundColor: "#5A4FCF", width: 10, height: 10, bottom: -4 };
-const WHITE_H:  React.CSSProperties = { backgroundColor: "#fff",    width: 10, height: 10, top:    -4 };
+const WHITE_H: React.CSSProperties = { backgroundColor: "#fff", width: 10, height: 10, top: -4 };
 
 // ── Base container — overflow:visible so handles/delete sit on the border ─
 const base = (sel: boolean, bg = "#fff", bdr?: string): React.CSSProperties => ({
@@ -88,7 +88,7 @@ function MediaInput({ label, value, onChange }: { label: string, value?: string,
             background: show ? "#f1f5f9" : "none", border: "1px solid #e2e8f0",
             borderRadius: 4, padding: "1px 4px", cursor: "pointer", display: "flex", alignItems: "center", gap: 2
           }}
-          className="hover:!border-[#5A4FCF] transition-all"
+          className="hover:!border-[#5A4FCF] transition-all cursor-pointer"
         >
           <ImageIcon size={8} /> {label} {value && <ImagePreview url={value} />}
         </button>
@@ -124,7 +124,7 @@ function MediaTrigger({ value, onClick, onClear }: { value?: string, onClick: ()
           display: "flex", alignItems: "center", justifyItems: "center",
           padding: 0, overflow: "hidden", position: "relative"
         }}
-        className="group/trigger hover:border-[#5A4FCF] transition-all"
+        className="group/trigger hover:border-[#5A4FCF] transition-all cursor-pointer"
       >
         {value ? (
           <>
@@ -142,13 +142,13 @@ function MediaTrigger({ value, onClick, onClear }: { value?: string, onClick: ()
       </button>
 
       {value && (
-         <button 
-           onClick={(e) => { e.stopPropagation(); onClear(); }}
-           className="p-1 hover:bg-red-50 text-slate-300 hover:text-red-500 rounded transition-all active:scale-90"
-           title="Remove Media"
-         >
-           <Trash size={10} />
-         </button>
+        <button
+          onClick={(e) => { e.stopPropagation(); onClear(); }}
+          className="p-1 hover:bg-red-50 text-slate-300 hover:text-red-500 rounded transition-all cursor-pointer active:scale-90"
+          title="Remove Media"
+        >
+          <Trash size={10} />
+        </button>
       )}
     </div>
   );
@@ -166,7 +166,7 @@ export function QuestionNode({ data, selected }: any) {
   const [activeMediaIdx, setActiveMediaIdx] = useState<number | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
 
-  const addOption    = () => onUpdate?.({ 
+  const addOption = () => onUpdate?.({
     options: [...options, ""],
     optionImages: [...(data.optionImages || []), ""]
   });
@@ -179,14 +179,14 @@ export function QuestionNode({ data, selected }: any) {
     onUpdate?.({ optionImages: next });
   };
   const removeOption = (i: number) => {
-    onUpdate?.({ 
+    onUpdate?.({
       options: options.filter((_: string, j: number) => j !== i),
       optionImages: (data.optionImages || []).filter((_: string, j: number) => j !== i)
     });
   };
 
   // Function to check if a specific source handle has an outgoing connection
-  const handleConnected = (handleId: string | null) => 
+  const handleConnected = (handleId: string | null) =>
     edges.some(e => e.source === id && e.sourceHandle === (handleId === "multi-source" ? null : handleId));
 
   const isConnected = edges.some(e => e.source === id);
@@ -203,10 +203,10 @@ export function QuestionNode({ data, selected }: any) {
         <select
           value={qtype || "SINGLE_SELECT"}
           onMouseDown={(e) => e.stopPropagation()}
-          onChange={(e) => { 
-            e.stopPropagation(); 
+          onChange={(e) => {
+            e.stopPropagation();
             // isTypeSwitch = true clears connections for this node in parent state
-            onUpdate?.({ qtype: e.target.value }, true); 
+            onUpdate?.({ qtype: e.target.value }, true);
           }}
           style={{ fontSize: 8, background: "#f8fafc", border: "none", outline: "none", color: "#64748b", cursor: "pointer", maxWidth: 52 }}
         >
@@ -266,17 +266,17 @@ export function QuestionNode({ data, selected }: any) {
                     minWidth: 0, boxSizing: "border-box", width: "100%"
                   }}
                 />
-                <MediaTrigger 
-                  value={data.optionImages?.[i]} 
+                <MediaTrigger
+                  value={data.optionImages?.[i]}
                   onClick={() => { setActiveMediaIdx(i); setModalOpen(true); }}
                   onClear={() => changeOptionImage(i, "")}
                 />
               </div>
 
-              <MediaPickerModal 
+              <MediaPickerModal
                 isOpen={modalOpen}
                 initialValue={activeMediaIdx !== null ? data.optionImages?.[activeMediaIdx] : ""}
-                onSelect={(url) => { if(activeMediaIdx !== null) changeOptionImage(activeMediaIdx, url); }}
+                onSelect={(url) => { if (activeMediaIdx !== null) changeOptionImage(activeMediaIdx, url); }}
                 onClose={() => { setModalOpen(false); setActiveMediaIdx(null); }}
                 title={activeMediaIdx !== null ? `Media for Option ${activeMediaIdx + 1}` : "Select Media"}
               />
@@ -284,9 +284,9 @@ export function QuestionNode({ data, selected }: any) {
                 onMouseDown={(e) => e.stopPropagation()}
                 onClick={(e) => { e.stopPropagation(); removeOption(i); }}
                 style={{ padding: 0, background: "none", border: "none", cursor: "pointer", color: "#cbd5e1", flexShrink: 0, alignSelf: "flex-start", marginTop: 4 }}
-                className="opacity-0 group-hover/opt:opacity-100 hover:!text-red-500 transition-all"
+                className="opacity-0 group-hover/opt:opacity-100 hover:!text-red-500 transition-all cursor-pointer"
               >
-                <Trash2 size={7} />
+                <Trash2 size={10} />
               </button>
 
               {/*
@@ -322,7 +322,7 @@ export function QuestionNode({ data, selected }: any) {
             color: "#94a3b8", cursor: "pointer", marginTop: 2,
             display: "flex", alignItems: "center", justifyContent: "center", gap: 2,
           }}
-          className="hover:!text-[#5A4FCF] hover:!border-[#5A4FCF] hover:!bg-indigo-50 transition-all"
+          className="hover:!text-[#5A4FCF] hover:!border-[#5A4FCF] hover:!bg-indigo-50 transition-all cursor-pointer"
         >
           <Plus size={8} /> Add Option
         </button>
@@ -402,14 +402,14 @@ export function StatementNode({ data, selected }: any) {
 
       <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
         <span style={{ fontSize: 8, fontWeight: 700, color: "#94a3b8", textTransform: "uppercase" }}>Illustration</span>
-        <MediaTrigger 
-          value={data.image} 
-          onClick={() => setModalOpen(true)} 
+        <MediaTrigger
+          value={data.image}
+          onClick={() => setModalOpen(true)}
           onClear={() => onUpdate?.({ image: "" })}
         />
       </div>
 
-      <MediaPickerModal 
+      <MediaPickerModal
         isOpen={modalOpen}
         initialValue={data.image}
         onSelect={(url) => onUpdate?.({ image: url })}
@@ -479,14 +479,14 @@ export function TerminalNode({ data, selected }: any) {
 
       <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
         <span style={{ fontSize: 8, fontWeight: 700, color: "#94a3b8", textTransform: "uppercase" }}>Main Result Image</span>
-        <MediaTrigger 
-          value={data.image} 
-          onClick={() => setModalOpen(true)} 
+        <MediaTrigger
+          value={data.image}
+          onClick={() => setModalOpen(true)}
           onClear={() => onUpdate?.({ image: "" })}
         />
       </div>
 
-      <MediaPickerModal 
+      <MediaPickerModal
         isOpen={modalOpen}
         initialValue={data.image}
         onSelect={(url) => onUpdate?.({ image: url })}

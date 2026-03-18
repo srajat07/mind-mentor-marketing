@@ -65,7 +65,7 @@ export default function MediaPickerModal({ isOpen, initialValue, onSelect, onClo
   return createPortal(
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
       {/* 2. Full-Screen Backdrop Overlay */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -74,7 +74,7 @@ export default function MediaPickerModal({ isOpen, initialValue, onSelect, onClo
       />
 
       {/* 3. Responsive Modal Container */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 30 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 30 }}
@@ -90,9 +90,9 @@ export default function MediaPickerModal({ isOpen, initialValue, onSelect, onClo
             </div>
             {title}
           </h3>
-          <button 
-            onClick={onClose} 
-            className="w-10 h-10 flex items-center justify-center hover:bg-slate-100 rounded-2xl transition-all text-slate-400 hover:text-slate-600 active:scale-90"
+          <button
+            onClick={onClose}
+            className="w-10 h-10 flex items-center justify-center hover:bg-slate-100 rounded-2xl transition-all cursor-pointer text-slate-400 hover:text-slate-600 active:scale-90"
           >
             <X size={24} />
           </button>
@@ -100,15 +100,15 @@ export default function MediaPickerModal({ isOpen, initialValue, onSelect, onClo
 
         {/* Tabs */}
         <div className="flex bg-slate-50/50 p-1.5 mx-8 mt-6 rounded-[20px] border border-slate-100">
-          <button 
+          <button
             onClick={() => setTab("upload")}
-            className={`flex-1 py-3 text-sm font-bold rounded-[14px] transition-all flex items-center justify-center gap-2 ${tab === "upload" ? "bg-white text-[#5A4FCF] shadow-sm" : "text-slate-400 hover:text-slate-600"}`}
+            className={`flex-1 py-3 text-sm font-bold rounded-[14px] transition-all cursor-pointer flex items-center justify-center gap-2 ${tab === "upload" ? "bg-white text-[#5A4FCF] shadow-sm" : "text-slate-400 hover:text-slate-600"}`}
           >
             <Upload size={16} /> Upload
           </button>
-          <button 
+          <button
             onClick={() => setTab("url")}
-            className={`flex-1 py-3 text-sm font-bold rounded-[14px] transition-all flex items-center justify-center gap-2 ${tab === "url" ? "bg-white text-[#5A4FCF] shadow-sm" : "text-slate-400 hover:text-slate-600"}`}
+            className={`flex-1 py-3 text-sm font-bold rounded-[14px] transition-all cursor-pointer flex items-center justify-center gap-2 ${tab === "url" ? "bg-white text-[#5A4FCF] shadow-sm" : "text-slate-400 hover:text-slate-600"}`}
           >
             <LinkIcon size={16} /> Link
           </button>
@@ -117,26 +117,26 @@ export default function MediaPickerModal({ isOpen, initialValue, onSelect, onClo
         {/* Body Content (Scrollable) */}
         <div className="flex-1 overflow-y-auto p-8 custom-scrollbar">
           <div className="flex flex-col gap-8">
-            
+
             {tab === "upload" ? (
-              <div 
+              <div
                 onClick={() => fileInputRef.current?.click()}
-                className="group relative aspect-video w-full border-2 border-dashed border-slate-200 rounded-[24px] flex flex-col items-center justify-center p-6 cursor-pointer hover:border-[#5A4FCF] hover:bg-indigo-50/20 transition-all"
+                className="group relative aspect-video w-full border-2 border-dashed border-slate-200 rounded-[24px] flex flex-col items-center justify-center p-6 cursor-pointer hover:border-[#5A4FCF] hover:bg-indigo-50/20 transition-all cursor-pointer"
               >
-                <input 
-                  type="file" 
-                  ref={fileInputRef} 
-                  className="hidden" 
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  className="hidden"
                   accept="image/*"
                   onChange={handleFileUpload}
                 />
-                
+
                 {preview && (preview.startsWith("data:image") || preview.startsWith("http")) ? (
                   <div className="w-full h-full relative z-10 rounded-xl overflow-hidden shadow-sm bg-white border border-white">
                     <img src={preview} alt="Upload Preview" className="w-full h-full object-contain" />
                     <div className="absolute inset-0 bg-[#5A4FCF]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center transition-all text-white gap-2">
-                       <Upload size={32} />
-                       <span className="font-bold text-xs uppercase tracking-widest">Replace File</span>
+                      <Upload size={32} />
+                      <span className="font-bold text-xs uppercase tracking-widest">Replace File</span>
                     </div>
                   </div>
                 ) : (
@@ -157,7 +157,7 @@ export default function MediaPickerModal({ isOpen, initialValue, onSelect, onClo
                     <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-[#5A4FCF] transition-colors">
                       <LinkIcon size={18} />
                     </div>
-                    <input 
+                    <input
                       type="text"
                       value={url}
                       onMouseDown={(e) => e.stopPropagation()}
@@ -184,7 +184,7 @@ export default function MediaPickerModal({ isOpen, initialValue, onSelect, onClo
                 </div>
               </div>
             )}
-            
+
             <p className="text-[11px] text-slate-400 leading-relaxed font-medium px-2">
               <span className="font-bold text-[#5A4FCF]">Tip:</span> Use high-quality PNG or SVG for best results. Images are stored as optimized strings to ensure your questionnaire remains fast and snappy.
             </p>
@@ -193,16 +193,16 @@ export default function MediaPickerModal({ isOpen, initialValue, onSelect, onClo
 
         {/* Footer (Pinned) */}
         <div className="px-8 py-6 bg-slate-50/50 border-t border-slate-100 flex items-center gap-4 sticky bottom-0 z-10">
-          <button 
+          <button
             onClick={onClose}
-            className="flex-1 py-4 px-6 rounded-2xl text-[15px] font-bold text-slate-500 hover:bg-slate-200/60 transition-all active:scale-95"
+            className="flex-1 py-4 px-6 rounded-2xl text-[15px] font-bold text-slate-500 hover:bg-slate-200/60 transition-all cursor-pointer active:scale-95"
           >
             Close
           </button>
-          <button 
+          <button
             onClick={handleConfirm}
             disabled={!url || isUploading}
-            className="flex-[2] py-4 px-6 bg-[#5A4FCF] text-white rounded-2xl text-[15px] font-bold shadow-[0_12px_24px_-8_rgba(90,79,207,0.4)] hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-40 disabled:pointer-events-none flex items-center justify-center gap-2.5"
+            className="flex-[2] py-4 px-6 bg-[#5A4FCF] text-white rounded-2xl text-[15px] font-bold shadow-[0_12px_24px_-8_rgba(90,79,207,0.4)] hover:scale-[1.02] active:scale-95 transition-all cursor-pointer disabled:opacity-40 disabled:pointer-events-none flex items-center justify-center gap-2.5"
           >
             <Check size={20} strokeWidth={2.5} /> Use This Media
           </button>

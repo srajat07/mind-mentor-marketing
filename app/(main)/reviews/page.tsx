@@ -163,10 +163,10 @@ export default function ReviewsPage() {
                     </div>
                     {/* Navigation */}
                     <div className="flex gap-2">
-                      <button className="w-8 h-8 rounded border border-[#E3E3E3] flex items-center justify-center text-[#4F5B76] hover:bg-gray-50 hover:text-[#24234C] transition-all">
+                      <button className="w-8 h-8 rounded border border-[#E3E3E3] flex items-center justify-center text-[#4F5B76] hover:bg-gray-50 hover:text-[#24234C] transition-all cursor-pointer">
                         <ChevronLeft size={16} />
                       </button>
-                      <button className="w-8 h-8 rounded border border-[#E3E3E3] flex items-center justify-center text-[#4F5B76] hover:bg-gray-50 hover:text-[#24234C] transition-all">
+                      <button className="w-8 h-8 rounded border border-[#E3E3E3] flex items-center justify-center text-[#4F5B76] hover:bg-gray-50 hover:text-[#24234C] transition-all cursor-pointer">
                         <ChevronRight size={16} />
                       </button>
                     </div>
