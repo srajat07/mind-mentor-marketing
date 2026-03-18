@@ -58,7 +58,7 @@ export function Navbar() {
               Log In
             </Link>
             <Link
-              href="#"
+              href="/quiz"
               className="px-6 py-3 rounded-full bg-[#5653FE] text-white font-semibold hover:bg-[#5653FE]/90 hover:-translate-y-0.5 transition-all shadow-sm flex items-center justify-center text-[16px]"
             >
               Start Now

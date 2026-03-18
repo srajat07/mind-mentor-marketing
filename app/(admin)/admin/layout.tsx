@@ -13,6 +13,7 @@ export default function AdminLayout({
 }) {
   const pathname = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const navItems = [
     { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
@@ -25,31 +26,61 @@ export default function AdminLayout({
   return (
     <div className="min-h-screen bg-slate-50 flex">
       {/* Sidebar */}
-      <aside className={`bg-[#1e293b] text-white w-64 fixed inset-y-0 left-0 transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} transition-transform duration-200 ease-in-out z-50 lg:relative lg:translate-x-0`}>
-        <div className="p-6">
-          <Logo isAdmin imageSize={32} textSize="text-lg" href="/admin" className="!gap-2" />
+      <aside
+        className={`bg-[#1e293b] text-white fixed inset-y-0 left-0 transform ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-all duration-300 ease-in-out z-50 lg:relative lg:translate-x-0 ${
+          isCollapsed ? "w-20" : "w-64"
+        }`}
+      >
+        <div className={`p-4 flex items-center ${isCollapsed ? "justify-center" : "justify-between"}`}>
+          {!isCollapsed && <Logo isAdmin imageSize={32} textSize="text-lg" href="/admin" className="!gap-2" />}
+          <button
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors hidden lg:block"
+            title={isCollapsed ? "Expand" : "Collapse"}
+          >
+            <Menu size={20} />
+          </button>
         </div>
-        <nav className="mt-6 px-4 space-y-1">
+
+        <nav className="mt-6 px-3 space-y-1">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                  isActive ? "bg-blue-600 text-white" : "text-slate-400 hover:bg-slate-800 hover:text-white"
-                }`}
+                title={isCollapsed ? item.name : ""}
+                className={`flex items-center gap-3 py-2.5 rounded-lg transition-all duration-200 ${
+                  isActive
+                    ? "bg-[#5A4FCF] text-white shadow-lg shadow-[#5A4FCF]/20"
+                    : "text-slate-400 hover:bg-slate-800 hover:text-white"
+                } ${isCollapsed ? "justify-center px-0" : "px-4"}`}
               >
-                <item.icon size={20} />
-                <span className="font-medium">{item.name}</span>
+                <item.icon size={22} className="shrink-0" />
+                {!isCollapsed && (
+                  <span className="font-medium text-sm whitespace-nowrap overflow-hidden transition-opacity duration-300">
+                    {item.name}
+                  </span>
+                )}
               </Link>
             );
           })}
         </nav>
+
         <div className="absolute bottom-0 w-full p-4 border-t border-slate-700">
-          <button className="flex items-center gap-3 px-4 py-3 w-full text-slate-400 hover:text-white transition-colors">
-            <LogOut size={20} />
-            <span className="font-medium">Logout</span>
+          <button
+            className={`flex items-center gap-3 px-4 py-3 w-full text-slate-400 hover:text-red-400 transition-colors ${
+              isCollapsed ? "justify-center px-0" : ""
+            }`}
+          >
+            <LogOut size={20} className="shrink-0" />
+            {!isCollapsed && (
+              <span className="font-medium text-sm whitespace-nowrap overflow-hidden">
+                Logout
+              </span>
+            )}
           </button>
         </div>
       </aside>
