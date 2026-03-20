@@ -70,6 +70,8 @@ function FlowEditor() {
   const [saving, setSaving] = useState(false);
   const [publishing, setPublishing] = useState(false);
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
+  const [showLoader, setShowLoader] = useState(true);
 
   const { screenToFlowPosition, fitView } = useReactFlow();
 
@@ -103,43 +105,61 @@ function FlowEditor() {
   // ── Load from DB, inject callbacks + preserve isStart flag ───────────────
   useEffect(() => {
     async function loadData() {
-      // 1. Try to load DRAFT first
-      let resp = await getQuizData("DRAFT");
-      console.log("Attempting to load DRAFT:", resp);
+      try {
+        // 1. Try to load DRAFT first
+        let resp = await getQuizData("DRAFT");
+        console.log("Attempting to load DRAFT:", resp);
 
-      // 2. Fallback to PUBLISHED if DRAFT is empty
-      if (!resp || !resp.nodes || resp.nodes.length === 0) {
-        resp = await getQuizData("PUBLISHED");
-        console.log("DRAFT missing, attempting to load PUBLISHED:", resp);
-      }
+        // 2. Fallback to PUBLISHED if DRAFT is empty
+        if (!resp || !resp.nodes || resp.nodes.length === 0) {
+          resp = await getQuizData("PUBLISHED");
+          console.log("DRAFT missing, attempting to load PUBLISHED:", resp);
+        }
 
-      if (resp?.nodes?.length) {
-        const hydrated = resp.nodes.map((node: any) => ({
-          ...node,
-          data: {
-            ...node.data,
-            onUpdate: (d: any, s?: boolean) => onUpdateNode(node.id, d, s),
-            onDelete: () => onDeleteNode(node.id),
-          },
-        }));
-        setNodes(hydrated);
+        if (resp?.nodes?.length) {
+          const hydrated = resp.nodes.map((node: any) => ({
+            ...node,
+            data: {
+              ...node.data,
+              onUpdate: (d: any, s?: boolean) => onUpdateNode(node.id, d, s),
+              onDelete: () => onDeleteNode(node.id),
+            },
+          }));
+          setNodes(hydrated);
 
-        // Migrate legacy 'opt-' handle IDs to 'handle-' format
-        const migratedEdges = (resp.edges || []).map((edge: any) => {
-          if (edge.sourceHandle && edge.sourceHandle.startsWith("opt-")) {
-            return { ...edge, sourceHandle: edge.sourceHandle.replace("opt-", "handle-") };
-          }
-          return edge;
-        });
+          // Migrate legacy 'opt-' handle IDs to 'handle-' format
+          const migratedEdges = (resp.edges || []).map((edge: any) => {
+            if (edge.sourceHandle && edge.sourceHandle.startsWith("opt-")) {
+              return { ...edge, sourceHandle: edge.sourceHandle.replace("opt-", "handle-") };
+            }
+            return edge;
+          });
 
-        // Delay setting edges to ensure nodes (and their handles) are rendered first
-        setTimeout(() => {
-          setEdges(migratedEdges);
-        }, 100);
+          // Delay setting edges to ensure nodes (and their handles) are rendered first
+          setTimeout(() => {
+            setEdges(migratedEdges);
+            // Small delay to ensure React Flow has rendered before clearing loader
+            setTimeout(() => setIsInitialLoading(false), 500);
+          }, 100);
+        } else {
+          // If no data, just stop loading
+          setIsInitialLoading(false);
+        }
+      } catch (error) {
+        console.error("Error loading quiz data:", error);
+        setIsInitialLoading(false);
       }
     }
     loadData();
   }, [setNodes, setEdges, onUpdateNode, onDeleteNode]);
+
+  // Handle loader unmounting after fade-out transition
+  useEffect(() => {
+    if (!isInitialLoading) {
+      const timer = setTimeout(() => setShowLoader(false), 400); // reduced to match 300ms transition
+      return () => clearTimeout(timer);
+    }
+  }, [isInitialLoading]);
 
   const onConnect = useCallback(
     (params: any) => {
@@ -307,6 +327,7 @@ function FlowEditor() {
   return (
     <div className="-m-8 flex flex-col">
 
+
       {/* ── Combined toolbar ───────────────────────────────────────────────── */}
       <div
         style={{
@@ -377,7 +398,7 @@ function FlowEditor() {
 
         {/* Save / Publish */}
         <div style={{ marginLeft: "auto", display: "flex", gap: 8 }}>
-          <button
+          {/* <button
             onClick={onSave}
             disabled={saving}
             style={{
@@ -390,7 +411,7 @@ function FlowEditor() {
           >
             <Save size={13} />
             {saving ? "Saving…" : "Save Draft"}
-          </button>
+          </button> */}
           <button
             onClick={onPublish}
             disabled={publishing}
@@ -412,6 +433,27 @@ function FlowEditor() {
         ref={reactFlowWrapper}
         style={{ height: "calc(100vh - 120px)", width: "100%", position: "relative" }}
       >
+        {showLoader && (
+          <div
+            className={`absolute inset-0 z-[100] bg-white/70 backdrop-blur-sm flex flex-col items-center justify-center transition-opacity duration-300 ${!isInitialLoading ? "opacity-0 pointer-events-none" : "opacity-100"
+              }`}
+          >
+            <div className="flex flex-col items-center">
+              <img
+                src="/assets/images/mindmentor-logo.png"
+                alt="Mind Mentor Logo"
+                className="w-16 h-16 mb-4"
+              />
+              <h2 className="text-2xl font-bold text-slate-800 mb-2 animate-pulse">
+                Mind Mentor
+              </h2>
+              <div className="w-10 h-10 border-4 border-slate-200 border-t-purple-600 rounded-full animate-spin mb-4" />
+              <span className="text-slate-400 text-sm font-medium">
+                Loading your workspace...
+              </span>
+            </div>
+          </div>
+        )}
         <ReactFlow
           nodes={nodes}
           edges={edges}

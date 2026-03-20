@@ -1,12 +1,57 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { FileText, ClipboardList, Users, TrendingUp } from "lucide-react";
 import Link from "next/link";
 
 export default function AdminDashboard() {
+  const [blogCount, setBlogCount] = useState<number | null>(null);
+  const [quizCount, setQuizCount] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const response = await fetch("/api/admin/stats");
+        const data = await response.json();
+        
+        if (response.ok) {
+          setBlogCount(data.blogCount);
+          setQuizCount(data.quizCount);
+        } else {
+          setBlogCount(0);
+          setQuizCount(0);
+          console.error("Failed to fetch stats:", data.error);
+        }
+      } catch (error) {
+        setBlogCount(0);
+        setQuizCount(0);
+        console.error("Error fetching admin stats:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStats();
+  }, []);
+
   const stats = [
-    { name: "Total Blog Posts", value: "24", icon: FileText, color: "text-blue-600", bg: "bg-blue-100" },
-    { name: "Active Quizzes", value: "12", icon: ClipboardList, color: "text-purple-600", bg: "bg-purple-100" },
+    { 
+      name: "Total Blog Posts", 
+      value: loading ? "..." : (blogCount ?? 0).toString(), 
+      icon: FileText, 
+      color: "text-blue-600", 
+      bg: "bg-blue-100",
+      isLoading: loading
+    },
+    { 
+      name: "Active Quizzes", 
+      value: loading ? "..." : (quizCount ?? 0).toString(), 
+      icon: ClipboardList, 
+      color: "text-purple-600", 
+      bg: "bg-purple-100",
+      isLoading: loading
+    },
     { name: "Total Users", value: "119,432", icon: Users, color: "text-emerald-600", bg: "bg-emerald-100" },
     { name: "Growth Rate", value: "+12.5%", icon: TrendingUp, color: "text-orange-600", bg: "bg-orange-100" },
   ];
@@ -21,7 +66,7 @@ export default function AdminDashboard() {
               <div className={`p-3 rounded-lg ${stat.bg} ${stat.color}`}>
                 <stat.icon size={24} />
               </div>
-              <span className="text-2xl font-bold text-slate-800">{stat.value}</span>
+              <span className={`text-2xl font-bold text-slate-800 ${(stat as any).isLoading ? 'animate-pulse' : ''}`}>{stat.value}</span>
             </div>
             <p className="text-sm font-medium text-slate-500">{stat.name}</p>
           </div>
